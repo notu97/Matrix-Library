@@ -441,13 +441,6 @@ namespace MATOPS
 
 							C=StrassenMultiply(A, B, dim_n);
 
-							for(int i=m_1;i<dim_n;i++)
-							{
-								free(C[i]);
-							}
-
-
-
 					if(print==true)
 						{
 								std::cout<<"A: \n";
@@ -463,14 +456,54 @@ namespace MATOPS
 
 						store_csv<Data1>(C, m_1,n_2,path);
 
+
+						Data1** M=(Data1 **)calloc(m_1,sizeof(Data1*));
+						for(int i=0;i<m_1;i++)
+						{
+							M[i]=(Data1*)calloc(n_2,sizeof(Data1));
+						}
+
+						for(int i=0;i<m_1;i++)
+						{
+							for(int j=0;j<n_2;j++)
+							{
+								M[i][j]=C[i][j];
+							}
+						}
+
 							// Free The memory before quitting
 							free(A);
 							free(B);
+							free(C);
 
-							return C;
+							return M;
 					}
 
 				} // matmul function ends here
+
+		// Matrix Transpose function begins here
+		Data1** Transpose(std::string path, std::string str_path)
+			{
+			    std::vector<std::vector<Data1>> MAT= load_CSV(path);
+
+			    Data1** A= (Data1 **)calloc(MAT[0].size(),sizeof(Data1*));
+
+			    for(int i=0;i<MAT[0].size();i++)
+				{
+					A[i]=(Data1*)calloc(MAT.size(),sizeof(Data1));
+				}
+
+				for(int i=0;i<MAT.size();i++)
+				{
+					for(int j=0;j<MAT[0].size();j++)
+					{
+						A[j][i]=MAT[i][j];
+					}
+				}
+
+				store_csv<Data1>(A,MAT[0].size(),MAT.size(),str_path);
+				return A;
+			}
 
 			};
 
