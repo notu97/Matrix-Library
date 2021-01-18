@@ -41,12 +41,6 @@ namespace MATOPS
 				return m; //m_row;
 			}
 
-		//    Matrix()
-		//    {
-		//        for(size_t i=0; i<m; ++i)
-		//            for(size_t j=0; j<n; ++j)
-		//            ElementAt(i,j) = 0;
-		//    }
 
 			// Default Matrix Initialization
 			Matrix()
@@ -160,6 +154,32 @@ namespace MATOPS
 
 		}; // Matrix Template Class Ends here !!!
 //=====================================================================================================================================
+
+		// CSV File storing
+
+		template<typename Data2>
+				void store_csv(Data2 ** C, int m_1, int n_2, std::string path)
+					{
+						std::ofstream file;
+						file.open(path);
+
+						for(int i=0;i<m_1;i++)
+						{
+							for(int j=0;j<n_2;j++)
+							{
+								file<<C[i][j];
+								if(j<(n_2)-1)
+								{
+									file<<",";
+								}
+								else
+								{
+									file<<"\n";
+								}
+							}
+						}
+
+					}
 
 		// Template to convert variable type from string to int,float, double or any other Datatype
 		template<typename My_data> My_data convert_to(const std::string &str)
@@ -332,25 +352,25 @@ namespace MATOPS
 			}
 
 
-		};
+//		};
 
 		// LOAD from CSV file Template
-		template<typename Datatype>
-		std::vector<std::vector<Datatype>> load_CSV(const std::string &path)
+//		template<typename Datatype>
+		std::vector<std::vector<Data1>> load_CSV(const std::string &path)
 		{
 		    std::ifstream indata;
 		    indata.open(path);
-		    std::vector<std::vector<Datatype>> dataList;
+		    std::vector<std::vector<Data1>> dataList;
 		    std::string line = "";
 
 		    while(getline(indata,line))
 		    {
 		        std::stringstream lineStream(line);
 		        std::string cell;
-		        std::vector<Datatype> temp;
+		        std::vector<Data1> temp;
 		        while (std::getline(lineStream,cell,','))
 		        {
-		            temp.push_back(convert_to<Datatype>(cell));
+		            temp.push_back(convert_to<Data1>(cell));
 		        }
 		        dataList.push_back(temp);
 
@@ -362,14 +382,12 @@ namespace MATOPS
 
 
 		// Matrix Multiplication from CSV files
-		template<typename Data>
-		Data** file_input(std::string file_1, std::string file_2, bool print=false)
+//		template<typename Data>
+		Data1** matmul(std::string file_1, std::string file_2, std::string path, bool print=false)
 
 				{
-//					CSVReader file_obj_1(file_1), file_obj_2(file_2);
-
-					std::vector<std::vector<Data>> MAT_1= load_CSV<Data>(file_1);
-					std::vector<std::vector<Data>> MAT_2= load_CSV<Data>(file_2);
+					std::vector<std::vector<Data1>> MAT_1= load_CSV(file_1);
+					std::vector<std::vector<Data1>> MAT_2= load_CSV(file_2);
 
 					int m_1=MAT_1.size(), n_1=MAT_1[0].size();  // Matrix 1 M,N
 
@@ -385,19 +403,20 @@ namespace MATOPS
 						int max_n= std::max(std::max(m_1,n_1),n_2);
 						int dim_n=1;
 
+						// Find the next power of 2.
 						while(dim_n<max_n)
 						{
 							dim_n=dim_n<<1;
 						}
 
-						Data ** A;
-						Data ** B;
-						Data ** C;
-						BigMatrix<Data> obj;
+						Data1 ** A;
+						Data1 ** B;
+						Data1 ** C;
+//						BigMatrix<Data> obj;
 
-						A=obj.Init_matrix(dim_n); // Allocate the memory for Matrix A
-						B=obj.Init_matrix(dim_n); // Allocate the memory for Matrix B
-						C= obj.Init_matrix(dim_n);
+						A=Init_matrix(dim_n); // Allocate the memory for Matrix A
+						B=Init_matrix(dim_n); // Allocate the memory for Matrix B
+
 						// build the square Matrices;
 
 							for(int k=0;k<m_1;k++)
@@ -405,11 +424,9 @@ namespace MATOPS
 								for(int l=0;l<n_1;l++)
 								{
 									A[k][l]= MAT_1[k][l];
-//													std::cout<<A[k][l]<<" ";
 								}
-//												std::cout<<"\n";
 							}
-//							std::cout<<'\n';
+
 							for(int k=0;k<m_2;k++)
 							{
 								for(int l=0;l<n_2;l++)
@@ -417,25 +434,34 @@ namespace MATOPS
 									B[k][l]= MAT_2[k][l];
 
 								}
-//
+
 							}
 
 //							Call Stressen's Algorithm function for A x B
 
-							C=obj.StrassenMultiply(A, B, dim_n);
+							C=StrassenMultiply(A, B, dim_n);
+
+							for(int i=m_1;i<dim_n;i++)
+							{
+								free(C[i]);
+							}
+
+
 
 					if(print==true)
-					{
-							std::cout<<"A: \n";
-							obj.print_Mat(A, m_1, n_1);
+						{
+								std::cout<<"A: \n";
+								print_Mat(A, m_1, n_1);
 
-							std::cout<<"\nB: \n";
-							obj.print_Mat(B, m_2, n_2);
+								std::cout<<"\nB: \n";
+								print_Mat(B, m_2, n_2);
 
-							std::cout<<"\nANSWER: \n";
-							obj.print_Mat(C, m_1, n_2);
+								std::cout<<"\nANSWER: \n";
+								print_Mat(C, m_1, n_2);
 
-					}
+						}
+
+						store_csv<Data1>(C, m_1,n_2,path);
 
 							// Free The memory before quitting
 							free(A);
@@ -444,10 +470,12 @@ namespace MATOPS
 							return C;
 					}
 
+				} // matmul function ends here
 
+			};
 
-				} // file_input function ends here
-
+//		template<typename Data_T>
+//		Data_T** Transpose(std::string path)
 
 
 
