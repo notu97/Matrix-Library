@@ -338,7 +338,7 @@ namespace MATOPS
 				    return C;
 			}
 
-			// Print Matrix
+			// Print Matrix (internal printing)
 			void print_Mat(Data1** C, int m, int n)
 			{
 				for(int i=0;i<m;i++)
@@ -380,6 +380,20 @@ namespace MATOPS
 		}
 
 
+
+		void Mat_print(std::string path)
+		{
+			std::vector<std::vector<Data1>> MAT= load_CSV(path);
+
+			for(std::vector<Data1> a: MAT)
+			{
+				for(Data1 i: a)
+				{
+					std::cout<< i <<" ";
+				}
+				std::cout<<'\n';
+			}
+		}
 
 		// Matrix Multiplication from CSV files
 //		template<typename Data>
@@ -506,10 +520,6 @@ namespace MATOPS
 			}
 
 			};
-
-//		template<typename Data_T>
-//		Data_T** Transpose(std::string path)
-
 
 
 }  // MATOPS namespace ends here
