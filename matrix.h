@@ -1,14 +1,11 @@
 /**
  * @file   matrix.h
  *
- * @date   Jan 9, 2021
+ * @date   Jan 25, 2021
  * @author Shiladitya Biswas
  *
  *
- *      This is a simple Matrix operation library, to Multiply and find the transpose of a Matrix.
- *      The library is divided into two parts, one for small Matrices (i.e. Matrix multiplication
- *      is performed with O(^3) time complexity) and another for large Matrices where Stressan's
- *      Algorithm (Time Complexity: O(n^2.8)) is used to Multiply two Matrices.
+ * This is a simple Matrix operation library, to Multiply 2 Matrices and find the transpose of a Matrix. The library is divided into two parts, one for small Matrices (i.e. Matrix multiplication is performed with O(^3) time complexity) and another for large Matrices where Stressan's Algorithm (Time Complexity: O(n^2.8)) is used to Multiply two Matrices.
  *
  */
 
@@ -28,29 +25,48 @@
 
 namespace MATOPS
 {
-/**
- * This is the Matrix Operation namespace. At the beginning of your Code, after including "matrix.h"
- * define this namespace, "using namespace MATOPS"
- *
- *
- *
- *
- */
+
+		/**
+		 * This class is for matrices of smaller size. The user can define a Matrix A of size m x n of Datatype T as follows: MATOPS::Matrix<T,m,n> A.
+		 * @tparam T = DataType of the Matrix. Eg. int, float, double etc.
+		 * @tparam m = No. of Rows of the Matrix
+		 * @tparam n = No. of Cols of the Matrix
+		 */
 		template<typename T, size_t m, size_t n>
 		class Matrix{
 
 
 			T **array;
 
+			/**
+			 * Given Matrix A
+			 * @param i
+			 * @param j
+			 * @return Returns the (i,j)th element of Matrix A.
+			 */
+			const T& ElementAt(size_t i, size_t j) const
+							{ return array[i][j]; }
+
+				T& ElementAt(size_t i, size_t j)
+					{ return array[i][j]; }
+
 			public:
 
 			virtual ~Matrix() {}
 
+			/**
+			 *
+			 * @return Returns the number of columns in the Matrix
+			 */
 			size_t cols()
 			{
 				return n; //m_col;
 			}
 
+			/**
+			 *
+			 * @return Returns the number of Rows in the Matrix.
+			 */
 			size_t rows()
 			{
 				return m; //m_row;
@@ -58,6 +74,9 @@ namespace MATOPS
 
 
 			// Default Matrix Initialization
+			/**
+			 * Default constructor to initialize the matrix with zeros.
+			 */
 			Matrix()
 			{
 				unsigned int i;
@@ -69,6 +88,10 @@ namespace MATOPS
 			}
 
 			// Initialize Matrix from Initializer_list
+			/**
+			 * Overloaded constructor the initialize the Matrix from a 2D Initializer list.
+			 * @param my_list
+			 */
 			Matrix(std::initializer_list<std::initializer_list<T>> my_list):Matrix()
 				{
 					int row_n=0;
@@ -87,6 +110,10 @@ namespace MATOPS
 
 
 			// Initialize the Matrix from 2D Vectors
+			/**
+			 * Overloaded constructor the initialize the Matrix from a 2D Vector.
+			 * @param A
+			 */
 			Matrix( std::vector<std::vector<T>>& A):Matrix()
 			{
 
@@ -97,6 +124,10 @@ namespace MATOPS
 
 
 			// Transpose of Matrix
+			/**
+			 * Take an object of type Matrix and returns its Transpose.
+			 * @return Given input Matrix A, the Transpose of A is returned.
+			 */
 			Matrix<T,n,m> transpose()
 			{
 				Matrix<T,n,m> result;
@@ -113,11 +144,19 @@ namespace MATOPS
 			}
 
 			// Matrix Multiplication without Malloc and time complexity: O(n^3)
-
-			template<size_t k, size_t k1>
-			friend Matrix<T,m,k> operator*(const Matrix<T,m,n> &A, const Matrix<T,k1,k> &B)
+			/**
+			 * Matrix multiplication using overloaded * operator. Takes 2 Matrices of size m x n and p x k. Checks if their inner dimensions match (i.e. n=p). If n=p then A and B is multiplied and a resultant Matrix of size m x k is returned.
+			 * @tparam k = No of cols of Matrix B
+			 * @tparam p = No of rows of Matrix B
+			 * @param A = Matrix A
+			 * @param B = Matrix B
+			 * @return
+			 *     Resultant Matrix Product of A and B i.e. A*B
+			 */
+			template<size_t k, size_t p>
+			friend Matrix<T,m,k> operator*(const Matrix<T,m,n> &A, const Matrix<T,p,k> &B)
 			{
-				if(n==k1)
+				if(n==p)
 				{
 					Matrix<T,m,k> result;
 
@@ -140,6 +179,9 @@ namespace MATOPS
 			}
 
 			// Equal to operator Overload
+			/**
+			 * Equal to operator overloaded to copy one matrix into another.
+			 */
 			Matrix& operator=(const Matrix& rhs) {
 				if( this != &rhs )
 					for(size_t i=0; i<m; ++i)
@@ -148,13 +190,17 @@ namespace MATOPS
 				return *this;
 			}
 
-			const T& ElementAt(size_t i, size_t j) const
-				{ return array[i][j]; }
-
-			T& ElementAt(size_t i, size_t j)
-				{ return array[i][j]; }
+//			const T& ElementAt(size_t i, size_t j) const
+//				{ return array[i][j]; }
+//
+//			T& ElementAt(size_t i, size_t j)
+//				{ return array[i][j]; }
 
 			// Ofstream operator Overloaded
+			/**
+			 *
+			 * Operator overloaded to output/print an object of type Matrix.
+			 */
 			friend  std::ostream& operator<<(std::ostream& os, const Matrix& rhs)
 			{
 				for(size_t i=0; i<m; ++i)
@@ -171,7 +217,14 @@ namespace MATOPS
 //=====================================================================================================================================
 
 		// CSV File storing
-
+		/**
+		 * Function to Store csv file at a given destination path. This function is internally called by matmul and Transpose function to store the Resultant Matrix obtained.
+		 * @tparam Data2
+		 * @param C = A Pointer ponting to the 2D Matrix in the memory
+		 * @param m_1 = No. of Rows of the Matrix
+		 * @param n_2 = No. of Columns of the Matrix
+		 * @param path = "path to destination csv file"
+		 */
 		template<typename Data2>
 				void store_csv(Data2 ** C, int m_1, int n_2, std::string path)
 					{
@@ -197,6 +250,12 @@ namespace MATOPS
 					}
 
 		// Template to convert variable type from string to int,float, double or any other Datatype
+		/**
+		 * Template to convert variable type from string to int,float, double or any other Datatype
+		 * @tparam My_data = Datatype into which we want to convert the string input from CSV files.
+		 * @param str = String input from the Csv file.
+		 * @return Returns Converted number from string to My_data.
+		 */
 		template<typename My_data> My_data convert_to(const std::string &str)
 			{
 				std::istringstream ss(str);
@@ -210,17 +269,14 @@ namespace MATOPS
 
 /**
  * This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (CSV) files and perform both Multiplication (Stressan's Algorithm) and transpose.
- *
- *
- *
- *
+ * @tparam Data1 = Datatype of the BigMatrix. Eg. int, float, double etc.
  */
 		// BIG MATRIX Multiplication and Transpose
 		template<typename Data1>
 		class BigMatrix
 		{
 
-			public:
+			private:
 			// Calloc chunk of Memory===============
 			Data1** Init_matrix(int n)
 			{  Data1** M;
@@ -362,6 +418,12 @@ namespace MATOPS
 			}
 
 			// Print Matrix (internal printing)
+			/**
+			 * This function is called from within the MATOPS::BigMatrix<Data1>::matmul function when print == True
+			 * @param C
+			 * @param m
+			 * @param n
+			 */
 			void print_Mat(Data1** C, int m, int n)
 			{
 				for(int i=0;i<m;i++)
@@ -379,6 +441,11 @@ namespace MATOPS
 
 		// LOAD from CSV file Template
 //		template<typename Datatype>
+			/**
+			 * Function to load CSV file. This function is internally called by  MATOPS::BigMatrix<Data1>::matmul  and  MATOPS::BigMatrix< Data1 >::Transpose to load the BigMatrix 's to be multiplied or Transposed.
+			 * @param path= "path to CSV file i.e. to be loaded"
+			 * @return
+			 */
 		std::vector<std::vector<Data1>> load_CSV(const std::string &path)
 		{
 		    std::ifstream indata;
@@ -402,8 +469,11 @@ namespace MATOPS
 		    return dataList;
 		}
 
-
-
+		/**
+		 * Function to print a Matrix from a .csv file.
+		 * @param path = "path to .csv to i.e. to be printed"
+		 */
+			public:
 		void Mat_print(std::string path)
 		{
 			std::vector<std::vector<Data1>> MAT= load_CSV(path);
@@ -422,10 +492,18 @@ namespace MATOPS
 //		template<typename Data>
 
 		/**
+		 * This is the BigMatrix multiplication Function. To multiply two matrices A and B stored in A.csv and B.csv respectively and store the result in C.csv file, do the following.\n
 		 *
+		 * @param file_1 = "path to A.csv"
+		 * @param file_2 = "path to B.csv"
+		 * @param path = path to a store file (no need to predefine C.csv file in the directory, it gets generated automatically.)
+		 * @param print = True, To see all the Matrices i.e. A,B and C in the output terminal/stdio. \n
 		 *
+		 * @return
+		 * 		Returns a pointer of type Data1** pointing to the C BigMatrix in the Memory. It can be used in the main program to access the (i,j) element of the BigMatrix C.
 		 *
-		 *
+		 *	Define a BigMatrix object BigMatrix<DataType> MatObj, where DataType can be int, float, double, long etc.\n
+		 *	Then call DataType** Result = MatObj.matmul("path/to/A.csv","path/to/B.csv","path/to/C.csv") from your program. The C.csv file generated file contains C=A*B. Result[i][j] accesses the (i,j)th element of BigMatrix C.
 		 */
 		Data1** matmul(std::string file_1, std::string file_2, std::string path, bool print=false)
 
@@ -526,6 +604,16 @@ namespace MATOPS
 				} // matmul function ends here
 
 		// Matrix Transpose function begins here
+
+		/**
+		 *
+		 * This is a function to find the Transpose of a BigMatrix and stores it in a csv file.
+		 * @param path = "path/to/A.csv"
+		 * @param str_path = path to store the Transpose of BigMatrix A.
+		 * @return
+		 * 		Returns a pointer of type Data1** pointing to the Transpose of BigMatrix A in the Memory. It can be used in the main program to access the (i,j) element of the Transpose of BigMatrix A
+		 *
+		 */
 		Data1** Transpose(std::string path, std::string str_path)
 			{
 			    std::vector<std::vector<Data1>> MAT= load_CSV(path);
