@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rows',['rows',['../classMATOPS_1_1Matrix.html#a3eb38202054437704ba4ceba78959d5b',1,'MATOPS::Matrix']]]
+  ['init_5fmatrix',['Init_matrix',['../d1/d6c/classMATOPS_1_1BigMatrix_a2730be4ce100cfdbaf1240703bd9cfb9.html#a2730be4ce100cfdbaf1240703bd9cfb9',1,'MATOPS::BigMatrix']]]
 ];

@@ -38,20 +38,11 @@ namespace MATOPS
 
 			T **array;
 
-			/**
-			 * Given Matrix A
-			 * @param i
-			 * @param j
-			 * @return Returns the (i,j)th element of Matrix A.
-			 */
-			const T& ElementAt(size_t i, size_t j) const
-							{ return array[i][j]; }
-
-				T& ElementAt(size_t i, size_t j)
-					{ return array[i][j]; }
-
 			public:
 
+			/**
+			 * Deconstructor
+			 */
 			virtual ~Matrix() {}
 
 			/**
@@ -60,7 +51,7 @@ namespace MATOPS
 			 */
 			size_t cols()
 			{
-				return n; //m_col;
+				return n;
 			}
 
 			/**
@@ -69,7 +60,7 @@ namespace MATOPS
 			 */
 			size_t rows()
 			{
-				return m; //m_row;
+				return m;
 			}
 
 
@@ -90,7 +81,7 @@ namespace MATOPS
 			// Initialize Matrix from Initializer_list
 			/**
 			 * Overloaded constructor the initialize the Matrix from a 2D Initializer list.
-			 * @param my_list
+			 * @param my_list = A 2D initializer_list of the the m x n Matrix. Eg: {{1,2},{3,4}}
 			 */
 			Matrix(std::initializer_list<std::initializer_list<T>> my_list):Matrix()
 				{
@@ -112,14 +103,14 @@ namespace MATOPS
 			// Initialize the Matrix from 2D Vectors
 			/**
 			 * Overloaded constructor the initialize the Matrix from a 2D Vector.
-			 * @param A
+			 * @param my_vec = A 2D initializer_list of the the m x n Matrix. Eg: {{1,2},{3,4}}
 			 */
-			Matrix( std::vector<std::vector<T>>& A):Matrix()
+			Matrix( std::vector<std::vector<T>>& my_vec):Matrix()
 			{
 
-				for(size_t i=0; i<A.size(); ++i)
-					for(size_t j=0; j<A[0].size(); ++j)
-						ElementAt(i,j) = A[i][j];
+				for(size_t i=0; i<my_vec.size(); ++i)
+					for(size_t j=0; j<my_vec[0].size(); ++j)
+						ElementAt(i,j) = my_vec[i][j];
 			}
 
 
@@ -156,7 +147,7 @@ namespace MATOPS
 			template<size_t k, size_t p>
 			friend Matrix<T,m,k> operator*(const Matrix<T,m,n> &A, const Matrix<T,p,k> &B)
 			{
-				if(n==p)
+				if(n==p) // Check if inner Dimensions Match, else throw error.
 				{
 					Matrix<T,m,k> result;
 
@@ -192,9 +183,14 @@ namespace MATOPS
 
 //			const T& ElementAt(size_t i, size_t j) const
 //				{ return array[i][j]; }
-//
-//			T& ElementAt(size_t i, size_t j)
-//				{ return array[i][j]; }
+			/**
+			 * Function to read and write value from and to the (i,j)th position of the Matrix
+			 * @param i = row index
+			 * @param j = column index
+			 * @return
+			 */
+			T& ElementAt(size_t i, size_t j)
+				{ return array[i][j]; }
 
 			// Ofstream operator Overloaded
 			/**
@@ -218,11 +214,11 @@ namespace MATOPS
 
 		// CSV File storing
 		/**
-		 * Function to Store csv file at a given destination path. This function is internally called by matmul and Transpose function to store the Resultant Matrix obtained.
+		 * Function to Store csv file at a given destination file. This function is internally called by matmul and Transpose function to store the Resultant BigMatrix obtained.
 		 * @tparam Data2
-		 * @param C = A Pointer ponting to the 2D Matrix in the memory
-		 * @param m_1 = No. of Rows of the Matrix
-		 * @param n_2 = No. of Columns of the Matrix
+		 * @param C = A Pointer pointing to the 2D BigMatrix in the memory
+		 * @param m_1 = No. of Rows of the BigMatrix
+		 * @param n_2 = No. of Columns of the BigMatrix
 		 * @param path = "path to destination csv file"
 		 */
 		template<typename Data2>
@@ -275,11 +271,22 @@ namespace MATOPS
 		template<typename Data1>
 		class BigMatrix
 		{
-
+			/**
+			 * \privatesection
+			 */
 			private:
-			// Calloc chunk of Memory===============
+
+			/**
+			 * Function to dynamically allocate/initialize an n x n matrix in the memory.
+			 * @param n = No. of rows and cols of the BigMatrix.
+			 * @return Returns a pointer pointing to the initialized BigMatrix.
+			 *
+			 */
+
 			Data1** Init_matrix(int n)
-			{  Data1** M;
+			{   // Calloc chunk of Memory
+
+				Data1** M;
 				M=(Data1 **)calloc(n,sizeof(Data1*));
 				for(int i=0;i<n;i++)
 				{
@@ -288,6 +295,13 @@ namespace MATOPS
 				return M;
 			}
 
+			/**
+			 * Function to Add 2 square Matrices of size n.
+			 * @param M1 = BigMatrix 1
+			 * @param M2 = BigMatrix 2
+			 * @param n  = Size of the Matrices
+			 * @return Returns a pointer pointing to the sum of M1 and M2
+			 */
 			// Matrix ADD ===================
 			Data1** add(Data1** M1, Data1** M2, int n)
 			{
@@ -298,6 +312,13 @@ namespace MATOPS
 			    return temp;
 			}
 
+			/**
+			 * Function to Subtract 2 square Matrices of size n.
+			 * @param M1 = BigMatrix 1
+			 * @param M2 = BigMatrix 2
+			 * @param n  = Size of the Matrices
+			 * @return Returns a pointer pointing to the difference of M1 and M2
+			 */
 			// Matrix SUBTRACT ===============
 			Data1** sub(Data1** M1, Data1** M2, int n)
 			{
@@ -308,6 +329,13 @@ namespace MATOPS
 				return temp;
 			}
 
+			/**
+			 * The main Strassen's Algorithm function implemented using recursion. Takes in square Matrices A and B.
+			 * @param A = BigMatrix A
+			 * @param B = BigMatrix B
+			 * @param n = Size of both A and B
+			 * @return Returns a square matrix i.e. the Multiplication result of A and B.
+			 */
 			Data1** StrassenMultiply(Data1** A, Data1** B, int n)
 			{
 				if(n==1)
@@ -471,7 +499,7 @@ namespace MATOPS
 
 		/**
 		 * Function to print a Matrix from a .csv file.
-		 * @param path = "path to .csv to i.e. to be printed"
+		 * @param path = "path to .csv i.e. to be printed"
 		 */
 			public:
 		void Mat_print(std::string path)
@@ -492,7 +520,7 @@ namespace MATOPS
 //		template<typename Data>
 
 		/**
-		 * This is the BigMatrix multiplication Function. To multiply two matrices A and B stored in A.csv and B.csv respectively and store the result in C.csv file, do the following.\n
+		 * This is the BigMatrix multiplication Function. To multiply two matrices A and B stored in A.csv and B.csv respectively and store the result in C.csv file.
 		 *
 		 * @param file_1 = "path to A.csv"
 		 * @param file_2 = "path to B.csv"
@@ -507,40 +535,41 @@ namespace MATOPS
 		 */
 		Data1** matmul(std::string file_1, std::string file_2, std::string path, bool print=false)
 
-				{
+				{   // Parse the CSV files and get the Matrices to be multiplied
+
 					std::vector<std::vector<Data1>> MAT_1= load_CSV(file_1);
 					std::vector<std::vector<Data1>> MAT_2= load_CSV(file_2);
 
+					// Get the dimensions of both the Matrices.
 					int m_1=MAT_1.size(), n_1=MAT_1[0].size();  // Matrix 1 M,N
-
 					int m_2=MAT_2.size(), n_2=MAT_2[0].size(); // Matrix 2 M,N
 
-					if(n_1 != m_2)
+					if(n_1 != m_2) // Check if inner dimensions of the Matrices Match. If not then Throw error.
 					{
 						std::cerr<<"Matrix Inner Dimensions don't match !!! \n";
 						exit(0);
 					}
-					else
+					else  // Begin Multiplication
 					{
-						int max_n= std::max(std::max(m_1,n_1),n_2);
+						int max_n= std::max(std::max(m_1,n_1),n_2); // Find the max of all the Matrix dimensions, to find the next highest power of 2.
 						int dim_n=1;
 
-						// Find the next power of 2.
+						// Find the next highest power of 2 using left shift operator (dim_n = Next highest power of 2).
+						// This will be used to pad zeros to both matrices A and B, and ultimately given as input to StrassenMultiply() function.
 						while(dim_n<max_n)
 						{
 							dim_n=dim_n<<1;
 						}
 
+						// Initialize 3 pointers to point at Matrices A and B, and to store the Result of AxB into C.
 						Data1 ** A;
 						Data1 ** B;
 						Data1 ** C;
-//						BigMatrix<Data> obj;
 
-						A=Init_matrix(dim_n); // Allocate the memory for Matrix A
-						B=Init_matrix(dim_n); // Allocate the memory for Matrix B
+						A=Init_matrix(dim_n); // Allocate the memory for Matrix A of size dim_n
+						B=Init_matrix(dim_n); // Allocate the memory for Matrix B of size dim_n
 
-						// build the square Matrices;
-
+						// Build the Zero padded square Matrices A and B
 							for(int k=0;k<m_1;k++)
 							{
 								for(int l=0;l<n_1;l++)
@@ -559,25 +588,24 @@ namespace MATOPS
 
 							}
 
-//							Call Stressen's Algorithm function for A x B
-
+						//Call Stressen's Algorithm function to get A x B and store in C.
 							C=StrassenMultiply(A, B, dim_n);
 
-					if(print==true)
+					if(print==true) // if print is true then print A, B and the result A.
 						{
 								std::cout<<"A: \n";
-								print_Mat(A, m_1, n_1);
+								print_Mat(A, m_1, n_1); //Call the print_Mat function to print the Matrix
 
 								std::cout<<"\nB: \n";
-								print_Mat(B, m_2, n_2);
+								print_Mat(B, m_2, n_2); //Call the print_Mat function to print the Matrix
 
-								std::cout<<"\nANSWER: \n";
+								std::cout<<"\nANSWER: \n"; //Call the print_Mat function to print the Matrix
 								print_Mat(C, m_1, n_2);
 
 						}
 
+					// Store the Result C into a CSV file, whose location is given by "path"
 						store_csv<Data1>(C, m_1,n_2,path);
-
 
 						Data1** M=(Data1 **)calloc(m_1,sizeof(Data1*));
 						for(int i=0;i<m_1;i++)
@@ -616,7 +644,7 @@ namespace MATOPS
 		 */
 		Data1** Transpose(std::string path, std::string str_path)
 			{
-			    std::vector<std::vector<Data1>> MAT= load_CSV(path);
+			    std::vector<std::vector<Data1>> MAT= load_CSV(path); // Load the Matrix from CSV file
 
 			    Data1** A= (Data1 **)calloc(MAT[0].size(),sizeof(Data1*));
 

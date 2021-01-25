@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['store_5fcsv',['store_csv',['../matrix_8h.html#a2050c01cf601a211d3abc45515b8749d',1,'MATOPS']]]
+  ['load_5fcsv',['load_CSV',['../d1/d6c/classMATOPS_1_1BigMatrix_a43e1704cb38eb6d0121be5b71014eb8e.html#a43e1704cb38eb6d0121be5b71014eb8e',1,'MATOPS::BigMatrix']]]
 ];

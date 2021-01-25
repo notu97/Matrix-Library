@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +52,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_func.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,37 +82,64 @@ $(function() {
 
 <div class="contents">
 &#160;<ul>
+<li>add()
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_a175eecea05e419357d7475f5e3e938da.html#a175eecea05e419357d7475f5e3e938da">MATOPS::BigMatrix&lt; Data1 &gt;</a>
+</li>
 <li>cols()
-: <a class="el" href="classMATOPS_1_1Matrix.html#a4fde0b19d8cd6ca18c24d836355a2e5a">MATOPS::Matrix&lt; T, m, n &gt;</a>
+: <a class="el" href="db/dc3/classMATOPS_1_1Matrix_a4fde0b19d8cd6ca18c24d836355a2e5a.html#a4fde0b19d8cd6ca18c24d836355a2e5a">MATOPS::Matrix&lt; T, m, n &gt;</a>
+</li>
+<li>ElementAt()
+: <a class="el" href="db/dc3/classMATOPS_1_1Matrix_a28edfa65a7b0f5cbeb96d91bfaee4d6a.html#a28edfa65a7b0f5cbeb96d91bfaee4d6a">MATOPS::Matrix&lt; T, m, n &gt;</a>
+</li>
+<li>Init_matrix()
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_a2730be4ce100cfdbaf1240703bd9cfb9.html#a2730be4ce100cfdbaf1240703bd9cfb9">MATOPS::BigMatrix&lt; Data1 &gt;</a>
+</li>
+<li>load_CSV()
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_a43e1704cb38eb6d0121be5b71014eb8e.html#a43e1704cb38eb6d0121be5b71014eb8e">MATOPS::BigMatrix&lt; Data1 &gt;</a>
 </li>
 <li>Mat_print()
-: <a class="el" href="classMATOPS_1_1BigMatrix.html#a2b3003374e008ff98f763c29aa4e3c07">MATOPS::BigMatrix&lt; Data1 &gt;</a>
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_a2b3003374e008ff98f763c29aa4e3c07.html#a2b3003374e008ff98f763c29aa4e3c07">MATOPS::BigMatrix&lt; Data1 &gt;</a>
 </li>
 <li>matmul()
-: <a class="el" href="classMATOPS_1_1BigMatrix.html#a910c6caf7fa472270fb0b5c3849186da">MATOPS::BigMatrix&lt; Data1 &gt;</a>
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_a910c6caf7fa472270fb0b5c3849186da.html#a910c6caf7fa472270fb0b5c3849186da">MATOPS::BigMatrix&lt; Data1 &gt;</a>
 </li>
 <li>Matrix()
-: <a class="el" href="classMATOPS_1_1Matrix.html#ab665ea80cebcf2656c51dac5a86efd7b">MATOPS::Matrix&lt; T, m, n &gt;</a>
+: <a class="el" href="db/dc3/classMATOPS_1_1Matrix_ab714719c18d79c8d0480d0665ff56609.html#ab714719c18d79c8d0480d0665ff56609">MATOPS::Matrix&lt; T, m, n &gt;</a>
 </li>
 <li>operator=()
-: <a class="el" href="classMATOPS_1_1Matrix.html#a4512ee518878124f54e3c596d2847d86">MATOPS::Matrix&lt; T, m, n &gt;</a>
+: <a class="el" href="db/dc3/classMATOPS_1_1Matrix_a4512ee518878124f54e3c596d2847d86.html#a4512ee518878124f54e3c596d2847d86">MATOPS::Matrix&lt; T, m, n &gt;</a>
+</li>
+<li>print_Mat()
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_af5223558c09e6c3c2fd3bcc5ccd08382.html#af5223558c09e6c3c2fd3bcc5ccd08382">MATOPS::BigMatrix&lt; Data1 &gt;</a>
 </li>
 <li>rows()
-: <a class="el" href="classMATOPS_1_1Matrix.html#a3eb38202054437704ba4ceba78959d5b">MATOPS::Matrix&lt; T, m, n &gt;</a>
+: <a class="el" href="db/dc3/classMATOPS_1_1Matrix_a3eb38202054437704ba4ceba78959d5b.html#a3eb38202054437704ba4ceba78959d5b">MATOPS::Matrix&lt; T, m, n &gt;</a>
+</li>
+<li>StrassenMultiply()
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_a71c665c80a1ca3731bd0d8ce37f0ace1.html#a71c665c80a1ca3731bd0d8ce37f0ace1">MATOPS::BigMatrix&lt; Data1 &gt;</a>
+</li>
+<li>sub()
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_a5c89e7f360fb3cc32abbf6f1d430fb1f.html#a5c89e7f360fb3cc32abbf6f1d430fb1f">MATOPS::BigMatrix&lt; Data1 &gt;</a>
 </li>
 <li>Transpose()
-: <a class="el" href="classMATOPS_1_1BigMatrix.html#ad4df35e5c72fc8f8f7c7267f2b420aec">MATOPS::BigMatrix&lt; Data1 &gt;</a>
+: <a class="el" href="d1/d6c/classMATOPS_1_1BigMatrix_ad4df35e5c72fc8f8f7c7267f2b420aec.html#ad4df35e5c72fc8f8f7c7267f2b420aec">MATOPS::BigMatrix&lt; Data1 &gt;</a>
 </li>
 <li>transpose()
-: <a class="el" href="classMATOPS_1_1Matrix.html#aa278f18f2e1324c56d965cd5e033b4eb">MATOPS::Matrix&lt; T, m, n &gt;</a>
+: <a class="el" href="db/dc3/classMATOPS_1_1Matrix_aa278f18f2e1324c56d965cd5e033b4eb.html#aa278f18f2e1324c56d965cd5e033b4eb">MATOPS::Matrix&lt; T, m, n &gt;</a>
+</li>
+<li>~Matrix()
+: <a class="el" href="db/dc3/classMATOPS_1_1Matrix_a9e67c9220ad942e35655ff62ad268365.html#a9e67c9220ad942e35655ff62ad268365">MATOPS::Matrix&lt; T, m, n &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Jan 25 2021 15:17:18 for Matrix Library by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['matrix',['Matrix',['../classMATOPS_1_1Matrix.html',1,'MATOPS']]]
+  ['matrix',['Matrix',['../db/dc3/classMATOPS_1_1Matrix.html',1,'MATOPS']]]
 ];
