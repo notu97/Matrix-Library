@@ -1,8 +1,15 @@
-/*
- * matrix.h
+/**
+ * @file   matrix.h
  *
- *  Created on: Jan 9, 2021
- *      Author: shiladitya
+ * @date   Jan 9, 2021
+ * @author Shiladitya Biswas
+ *
+ *
+ *      This is a simple Matrix operation library, to Multiply and find the transpose of a Matrix.
+ *      The library is divided into two parts, one for small Matrices (i.e. Matrix multiplication
+ *      is performed with O(^3) time complexity) and another for large Matrices where Stressan's
+ *      Algorithm (Time Complexity: O(n^2.8)) is used to Multiply two Matrices.
+ *
  */
 
 #ifndef MATRIX_H_
@@ -21,9 +28,17 @@
 
 namespace MATOPS
 {
-
+/**
+ * This is the Matrix Operation namespace. At the beginning of your Code, after including "matrix.h"
+ * define this namespace, "using namespace MATOPS"
+ *
+ *
+ *
+ *
+ */
 		template<typename T, size_t m, size_t n>
 		class Matrix{
+
 
 			T **array;
 
@@ -192,6 +207,14 @@ namespace MATOPS
 				return num;
 			}
 
+
+/**
+ * This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (CSV) files and perform both Multiplication (Stressan's Algorithm) and transpose.
+ *
+ *
+ *
+ *
+ */
 		// BIG MATRIX Multiplication and Transpose
 		template<typename Data1>
 		class BigMatrix
@@ -397,6 +420,13 @@ namespace MATOPS
 
 		// Matrix Multiplication from CSV files
 //		template<typename Data>
+
+		/**
+		 *
+		 *
+		 *
+		 *
+		 */
 		Data1** matmul(std::string file_1, std::string file_2, std::string path, bool print=false)
 
 				{
