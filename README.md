@@ -41,6 +41,8 @@ MATOPS::Matrix<float,4,2> B{{1,2},{5,6},{9,10},{3,4},{7,8}};
 MATOPS::Matrix<float,3,2> C=A*B;
 
 std::cout<< C;
+\\ OR
+std::cout<<A*B;
 ```
 
 
