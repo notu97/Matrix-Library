@@ -4,7 +4,7 @@ A simple Matrix library to perform  Matrix operations namely Matrix Multiplicati
 
 Matrix multiplication for small matrices is done using the straight forward solution with time complexity `O(n^3)`. While for large matrices the Matrix multiplication is done using the Strassen's Algorithm that has Time Complexity of approximatley `O(n^2.8)`.
 
-For Large Matrices the input is taken in a Comma Separated Variable (csv) file format, and the output is also stored in a csv file. For small matrices the user has to manually enter the values of the matrix either using a initializer_list format or as a 2D vector. 
+For Large Matrices the input is taken in a Comma Separated Variable (csv) file format, and the output is stored in a csv file. For small matrices the user has to manually enter the values of the matrix either using a initializer_list format or as a 2D vector. 
 
 ## Installation
 Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using #include<matirx.h>
@@ -12,6 +12,8 @@ Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/m
 
 ## Usage
 
+
+## Example code
 ```  C++
 #include<iostream>
 #include <matrix.h>
