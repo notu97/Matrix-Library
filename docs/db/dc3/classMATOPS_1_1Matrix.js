@@ -12,5 +12,5 @@ var classMATOPS_1_1Matrix =
     [ "transpose", "db/dc3/classMATOPS_1_1Matrix_aa278f18f2e1324c56d965cd5e033b4eb.html#aa278f18f2e1324c56d965cd5e033b4eb", null ],
     [ "operator*", "db/dc3/classMATOPS_1_1Matrix_a71a095944f9f8db8ac68b41e3a409114.html#a71a095944f9f8db8ac68b41e3a409114", null ],
     [ "operator<<", "db/dc3/classMATOPS_1_1Matrix_ae239bcfdd34ba0b3693e1c11063afc6a.html#ae239bcfdd34ba0b3693e1c11063afc6a", null ],
-    [ "array", "db/dc3/classMATOPS_1_1Matrix_ae6dc2c72b7cdabef4a06e84913056d4d.html#ae6dc2c72b7cdabef4a06e84913056d4d", null ]
+    [ "array", "db/dc3/classMATOPS_1_1Matrix_af2a995c9d251f109d54040e2732a93f0.html#af2a995c9d251f109d54040e2732a93f0", null ]
 ];

@@ -37,9 +37,7 @@ namespace MATOPS
 		template<typename T, size_t m, size_t n>
 		class Matrix{
 
-
-			T **array;
-
+			T array[m][n];
 			public:
 
 			/**
@@ -72,11 +70,12 @@ namespace MATOPS
 			 */
 			Matrix()
 			{
-				unsigned int i;
-				array=(T **)calloc(m,sizeof(T*));
-				for(i=0;i<m;i++)
+				for(size_t i=0;i<m;i++)
 				{
-					array[i]=(T*)calloc(n,sizeof(T));
+					for(size_t j=0;j<n;j++)
+					{
+						array[i][j]=0;
+					}
 				}
 			}
 
@@ -622,26 +621,11 @@ namespace MATOPS
 					// Store the Result C into a CSV file, whose location is given by "path"
 						store_csv<Data1>(C, m_1,n_2,path);
 
-//						Data1** M=(Data1 **)calloc(m_1,sizeof(Data1*));
-//						for(int i=0;i<m_1;i++)
-//						{
-//							M[i]=(Data1*)calloc(n_2,sizeof(Data1));
-//						}
-//
-//						for(int i=0;i<m_1;i++)
-//						{
-//							for(int j=0;j<n_2;j++)
-//							{
-//								M[i][j]=C[i][j];
-//							}
-//						}
+						// Free The memory before quitting
+						free(A);
+						free(B);
+						free(C);
 
-							// Free The memory before quitting
-							free(A);
-							free(B);
-							free(C);
-//							free(M);
-							//return M;
 					}
 
 				} // matmul function ends here
