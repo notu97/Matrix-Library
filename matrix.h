@@ -27,7 +27,7 @@ namespace MATOPS
 {
 
 		/**
-		 * This class is for matrices of smaller size. The user can define a Matrix A of size m x n of Datatype T as follows: MATOPS::Matrix<T,m,n> A.
+		 * @brief This class is for matrices of smaller size. The user can define a Matrix A of size m x n of Datatype T as follows: MATOPS::Matrix<T,m,n> A.
 		 * @tparam T = DataType of the Matrix. Eg. int, float, double etc.
 		 * @tparam m = No. of Rows of the Matrix
 		 * @tparam n = No. of Cols of the Matrix
