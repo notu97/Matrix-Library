@@ -94,7 +94,8 @@ $(document).ready(function(){initNavTree('index.html','');});
 <h3>Matrix Class (for small Matrices)</h3>
 <h4>Defining a small Matrix of size 3x4 of type float</h4>
 <p>Using initilizer list </p><div class="fragment"><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div></div><!-- fragment --><p>Using 2D std::vector </p><div class="fragment"><div class="line">std::vector&lt;std::vector&lt;float&gt;&gt; vect {{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A(vect);</div></div><!-- fragment --><p>#### Transposing a small Matrix </p><div class="fragment"><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div><div class="line">std::cout&lt;&lt; A.transpose();</div></div><!-- fragment --><p>#### Multiplying 2 small Matrices </p><div class="fragment"><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div><div class="line">MATOPS::Matrix&lt;float,4,2&gt; B{{1,2},{5,6},{9,10},{3,4},{7,8}};</div><div class="line">MATOPS::Matrix&lt;float,3,2&gt; C=A*B;</div><div class="line"></div><div class="line">std::cout&lt;&lt; C;</div><div class="line">//OR</div><div class="line">std::cout&lt;&lt;A*B;</div></div><!-- fragment --><h3>BigMatrix Class (for large Matrices)</h3>
-<p>Since big Matrices are already defined in a csv file, we can just parse the files and find out the dimensions of the matrix. The only information to be given to the header file is the Datatype of the Matrix. </p><h4>BigMatrix Multiply (Strassen's Algorithm)</h4>
+<p>Since big Matrices are already defined in a csv file, we can just parse the files and find out the dimensions of the matrix. The only information to be given to the header file is the Datatype of the Matrix.</p>
+<h4>BigMatrix Multiply (Strassen's Algorithm)</h4>
 <p>Let there be 2 matrices A and B stored in 2 csv files namely A.csv and B.csv repectively. We wish to multiply both of them and store the result in a third file named Ans.csv . The code for this process is shown below.</p>
 <div class="fragment"><div class="line">MATOPS::BigMatrix&lt;float&gt; MatObj; // Defining a Matricx object</div><div class="line"></div><div class="line">// Multiplying the two Matrices A.csv, B.csv and storing them in Ans.csv</div><div class="line">MatObj.matmul(&quot;/path/to/A.csv&quot;,&quot;/path/to/B.csv&quot;,&quot;/path/to/Ans.csv&quot;);</div><div class="line"></div><div class="line">MatObj.Mat_print(/path/to/Ans.csv); // Printing the Answer</div></div><!-- fragment --> <h4>BigMatrix Transpose</h4>
 <p>Given a matrix A in A.csv file, we wish to find out its transpose and store it in a new file A_trans.csv</p>
@@ -104,7 +105,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jan 28 2021 03:23:19 for Matrix Library by
+    <li class="footer">Generated on Thu Jan 28 2021 03:25:03 for Matrix Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

@@ -47,6 +47,7 @@ std::cout<<A*B;
 
 ### BigMatrix Class (for large Matrices)
 Since big Matrices are already defined in a csv file, we can just parse the files and find out the dimensions of the matrix. The only information to be given to the header file is the Datatype of the Matrix. 
+
 #### BigMatrix Multiply (Strassen's Algorithm)
 Let there be 2 matrices A and B stored in 2 csv files namely A.csv and B.csv repectively. We wish to multiply both of them and store the result in a third file named Ans.csv . The code for this process is shown below.
 
