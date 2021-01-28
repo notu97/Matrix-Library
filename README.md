@@ -82,7 +82,7 @@ using namespace MATOPS; //namespace for matrix.h
 int main() {
 	
 	// Define matrices of size 2x4 and 2x2 of type double
-	Matrix<double,2,4> B{{1,2,4,5},{4,6,7,8}};  
+	Matrix<double,2,4> B{{1,2,4,5},{4,6,7,8}}; 
 	Matrix<double,2,2> A{{1,2},{2,2}};
 	
 	// Print the Matrices A and B followed by Product A*B and transpose of A
