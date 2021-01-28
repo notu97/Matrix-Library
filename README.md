@@ -2,6 +2,9 @@
 
 A simple Matrix library to perform Matrix Multiplication(using Strassen's Algorithm) and Transpose(Coming Soon !!!).
 
+
+## Usage
+
 ```  C++
 #include<iostream>
 #include <matrix.h>
