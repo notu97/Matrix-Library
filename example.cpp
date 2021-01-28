@@ -46,7 +46,7 @@ int main() {
 
 	BigMatrix<float> MatObj;
 
-	float** a=MatObj.matmul("/path/to/A.csv","/path/to//B.csv","/path/to/Ans.csv");
+	float** a=MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
 
 	//cout<<a[0][0]<<" "<<a[1][0]<<" "<<a[2][0]<<" "<<a[3][0]<<" "<<a[4][0]<<" \n\n";
 
