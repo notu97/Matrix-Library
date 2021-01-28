@@ -12,7 +12,7 @@ Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/m
 
 ## Usage
 
-##### Defining a small Matrix of size 3x4 of type float
+#### Defining a small Matrix of size 3x4 of type float
 
 Using initilizer list
 ``` C++
