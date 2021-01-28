@@ -28,7 +28,7 @@ int main() {
 	// Multiply two Matrices in .csv format and save the result in Ans.csv file.
 	float** a=MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
 
-	// Read Matrix A from A.csv and find its Transpose and save it in A_trans.csv
+	// Read Matrix A from A.csv, find its Transpose and save it in A_trans.csv
 	float** b=MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv");
 
 	// print Matrix in file A.csv
