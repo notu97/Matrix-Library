@@ -11,7 +11,7 @@ Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/m
 
 
 ## Usage
-
+### Matrix Class (for small Matrices)
 #### Defining a small Matrix of size 3x4 of type float
 
 Using initilizer list
@@ -41,10 +41,11 @@ MATOPS::Matrix<float,4,2> B{{1,2},{5,6},{9,10},{3,4},{7,8}};
 MATOPS::Matrix<float,3,2> C=A*B;
 
 std::cout<< C;
-\\ OR
+//OR
 std::cout<<A*B;
 ```
 
+### BigMatrix Class()
 
 
 ## Example code
