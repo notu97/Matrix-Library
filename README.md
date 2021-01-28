@@ -101,7 +101,6 @@ int main() {
 	// In-place Transpose: Read Matrix A from A.csv, find its Transpose and overwrite A.csv
 	MatObj.Transpose("/path/to/A.csv");
 
-
 	// print Matrix in file A.csv
 	MatObj.Mat_print("/path/to/A.csv");
 
