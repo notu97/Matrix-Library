@@ -15,7 +15,7 @@ Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/m
 Defining a small Matrix of size 3x4 of type float
 ##### Using initilizer list
 ``` C++
-MATOPS::Matrix<float,3,4> A {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+MATOPS::Matrix<float,3,4> A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};
 
 ```
 ##### Using 2D std::vector
