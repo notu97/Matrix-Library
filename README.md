@@ -56,16 +56,16 @@ MATOPS::BigMatrix<float> MatObj; // Defining a Matricx object
 // Multiplying the two Matrices A.csv, B.csv and storing them in Ans.csv
 MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
 
-MatObj.Mat\_print(/path/to/Ans.csv); 
+MatObj.Mat_print(/path/to/Ans.csv); // Printing the Answer
 ```
 #### BigMatrix Transpose
 Given a matrix A in A.csv file, we wish to find out its transpose and store it in a new file A_trans.csv
 
 ``` C++
 MATOPS::BigMatrix<float> MatObj; // Defining a Matricx object
-MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv");
+MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv"); // Transposing the matrix
 
-MatObj.Mat\_print(/path/to/A_trans.csv);
+MatObj.Mat_print(/path/to/A_trans.csv); // Printing the result
 ```
 
 ## Example code
