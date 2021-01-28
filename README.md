@@ -23,15 +23,18 @@ int main() {
 	// Print the Matrices and their Product A*B
 	cout<<A<<"\n \n"<<B<<"\n \n"<< A*B<<"\n\n";
 
-	BigMatrix<float> MatObj;
-
+	BigMatrix<float> MatObj; // Define float object for Big Matrix
+	
+	// Multiply two Matrices in .csv format and save the result in Ans.csv file.
 	float** a=MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
 
+	// Read Matrix A from A.csv and find its Transpose and save it in A_trans.csv
+	float** b=MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv");
 
-	float** b=MatObj.Transpose("/path/to/A.csv", "/path/to/A_tras.csv");
-
+	// print Matrix in file A.csv
 	MatObj.Mat_print("/path/to/A.csv");
 
+	// free the a and b pointers.
 	free(a);
 	free(b);
 	return 0;
