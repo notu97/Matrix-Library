@@ -41,7 +41,7 @@ namespace MATOPS
 			public:
 
 			/**
-			 * Deconstructor
+			 * Destructor
 			 */
 			virtual ~Matrix() {}
 
@@ -66,7 +66,7 @@ namespace MATOPS
 
 			// Default Matrix Initialization
 			/**
-			 * Default constructor to initialize the matrix with zeros.
+			 * @brief Default constructor to initialize the matrix with zeros.
 			 */
 			Matrix()
 			{
@@ -80,7 +80,7 @@ namespace MATOPS
 
 			// Initialize Matrix from Initializer_list
 			/**
-			 * Overloaded constructor the initialize the Matrix from a 2D Initializer list.
+			 * @brief Overloaded constructor the initialize the Matrix from a 2D Initializer list.
 			 * @param my_list = A 2D initializer_list of the the m x n Matrix. Eg: {{1,2},{3,4}}
 			 */
 			Matrix(std::initializer_list<std::initializer_list<T>> my_list):Matrix()
@@ -102,7 +102,7 @@ namespace MATOPS
 
 			// Initialize the Matrix from 2D Vectors
 			/**
-			 * Overloaded constructor the initialize the Matrix from a 2D Vector.
+			 * @brief Overloaded constructor the initialize the Matrix from a 2D Vector.
 			 * @param my_vec = A 2D initializer_list of the the m x n Matrix. Eg: {{1,2},{3,4}}
 			 */
 			Matrix( std::vector<std::vector<T>>& my_vec):Matrix()
@@ -116,7 +116,7 @@ namespace MATOPS
 
 			// Transpose of Matrix
 			/**
-			 * Take an object of type Matrix and returns its Transpose.
+			 * @brief Take an object of type Matrix and returns its Transpose.
 			 * @return Given input Matrix A, the Transpose of A is returned.
 			 */
 			Matrix<T,n,m> transpose()
@@ -136,7 +136,7 @@ namespace MATOPS
 
 			// Matrix Multiplication without Malloc and time complexity: O(n^3)
 			/**
-			 * Matrix multiplication using overloaded * operator. Takes 2 Matrices of size m x n and p x k. Checks if their inner dimensions match (i.e. n=p). If n=p then A and B is multiplied and a resultant Matrix of size m x k is returned.
+			 * @brief Matrix multiplication using overloaded * operator. Takes 2 Matrices of size m x n and p x k. Checks if their inner dimensions match (i.e. n=p). If n=p then A and B is multiplied and a resultant Matrix of size m x k is returned.
 			 * @tparam k = No of cols of Matrix B
 			 * @tparam p = No of rows of Matrix B
 			 * @param A = Matrix A
@@ -171,7 +171,7 @@ namespace MATOPS
 
 			// Equal to operator Overload
 			/**
-			 * Equal to operator overloaded to copy one matrix into another.
+			 * @brief Equal to operator overloaded to copy one matrix into another.
 			 */
 			Matrix& operator=(const Matrix& rhs) {
 				if( this != &rhs )
@@ -183,7 +183,7 @@ namespace MATOPS
 
 
 			/**
-			 * Function to read value from the (i,j)th position of the Matrix
+			 * @brief Function to read value from the (i,j)th position of the Matrix
 			 * @param i = row index
 			 * @param j = column index
 			 * @return
@@ -192,7 +192,7 @@ namespace MATOPS
 					{ return array[i][j]; }
 
 			/**
-			 * Function to write value to the (i,j)th position of the Matrix
+			 * @brief Function to write value to the (i,j)th position of the Matrix
 			 * @param i
 			 * @param j
 			 * @return
@@ -203,7 +203,7 @@ namespace MATOPS
 			// Ofstream operator Overloaded
 			/**
 			 *
-			 * Operator overloaded to output/print an object of type Matrix.
+			 * @brief Operator overloaded to output/print an object of type Matrix.
 			 */
 			friend  std::ostream& operator<<(std::ostream& os, const Matrix& rhs)
 			{
@@ -222,7 +222,7 @@ namespace MATOPS
 
 		// CSV File storing
 		/**
-		 * Function to Store csv file at a given destination file. This function is internally called by matmul and Transpose function to store the Resultant BigMatrix obtained.
+		 * @brief Function template to Store csv file at a given destination file. This function is internally called by matmul and Transpose function to store the Resultant BigMatrix obtained.
 		 * @tparam Data2
 		 * @param C = A Pointer pointing to the 2D BigMatrix in the memory
 		 * @param m_1 = No. of Rows of the BigMatrix
@@ -256,7 +256,7 @@ namespace MATOPS
 
 		// Template to convert variable type from string to int,float, double or any other Datatype
 		/**
-		 * Template to convert variable type from string to int,float, double or any other Datatype
+		 * @brief Function template to convert variable type from string to int,float, double or any other Datatype
 		 * @tparam My_data = Datatype into which we want to convert the string input from CSV files.
 		 * @param str = String input from the Csv file.
 		 * @return Returns Converted number from string to My_data.
@@ -273,7 +273,7 @@ namespace MATOPS
 
 
 		/**
-		 * This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (CSV) files and perform both Multiplication (Stressan's Algorithm) and transpose.
+		 * @brief This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (CSV) files and perform both Multiplication (Stressan's Algorithm) and transpose.
 		 * @tparam Data1 = Datatype of the BigMatrix. Eg. int, float, double etc.
 		 */
 		// BIG MATRIX Multiplication and Transpose
@@ -286,7 +286,7 @@ namespace MATOPS
 			private:
 
 			/**
-			 * Function to dynamically allocate/initialize an n x n matrix in the memory.
+			 * @brief Function to dynamically allocate/initialize an n x n matrix in the memory.
 			 * @param n = No. of rows and cols of the BigMatrix.
 			 * @return Returns a pointer pointing to the initialized BigMatrix.
 			 *
@@ -305,7 +305,7 @@ namespace MATOPS
 			}
 
 			/**
-			 * Function to Add 2 square Matrices of size n.
+			 * @brief Function to Add 2 square Matrices of size n.
 			 * @param M1 = BigMatrix 1
 			 * @param M2 = BigMatrix 2
 			 * @param n  = Size of the Matrices
@@ -322,7 +322,7 @@ namespace MATOPS
 			}
 
 			/**
-			 * Function to Subtract 2 square Matrices of size n.
+			 * @brief Function to Subtract 2 square Matrices of size n.
 			 * @param M1 = BigMatrix 1
 			 * @param M2 = BigMatrix 2
 			 * @param n  = Size of the Matrices
@@ -339,7 +339,7 @@ namespace MATOPS
 			}
 
 			/**
-			 * The main Strassen's Algorithm function implemented using recursion. Takes in square Matrices A and B.
+			 * @brief The main Strassen's Algorithm function implemented using recursion. Takes in square Matrices A and B.
 			 * @param A = BigMatrix A
 			 * @param B = BigMatrix B
 			 * @param n = Size of both A and B
@@ -456,7 +456,7 @@ namespace MATOPS
 
 			// Print Matrix (internal printing)
 			/**
-			 * This function is called from within the MATOPS::BigMatrix<Data1>::matmul function when print == True
+			 * @brief This function is called from within the MATOPS::BigMatrix<Data1>::matmul function when print == True
 			 * @param C
 			 * @param m
 			 * @param n
@@ -479,7 +479,7 @@ namespace MATOPS
 		// LOAD from CSV file Template
 //		template<typename Datatype>
 			/**
-			 * Function to load CSV file. This function is internally called by  MATOPS::BigMatrix<Data1>::matmul  and  MATOPS::BigMatrix< Data1 >::Transpose to load the BigMatrix 's to be multiplied or Transposed. It throws an error if path is invalid or CSV doesn't exist.
+			 * @brief Function to load CSV file. This function is internally called by  MATOPS::BigMatrix<Data1>::matmul  and  MATOPS::BigMatrix< Data1 >::Transpose to load the BigMatrix 's to be multiplied or Transposed. It throws an error if path is invalid or CSV doesn't exist.
 			 * @param path= "path to CSV file i.e. to be loaded"
 			 * @return A pointer to the Matrix loaded in memory.
 			 */
@@ -514,7 +514,7 @@ namespace MATOPS
 		}
 
 		/**
-		 * Function to print a Matrix from a .csv file.
+		 * @brief Function to print a Matrix from a .csv file.
 		 * @param path = "path to .csv i.e. to be printed"
 		 */
 			public:
@@ -536,7 +536,7 @@ namespace MATOPS
 //		template<typename Data>
 
 		/**
-		 * This is the BigMatrix multiplication Function. To multiply two matrices A and B stored in A.csv and B.csv respectively and store the result in C.csv file.
+		 * @brief This is the BigMatrix multiplication Function. To multiply two matrices A and B stored in A.csv and B.csv respectively and store the result in C.csv file.
 		 *
 		 * @param file_1 = "path to A.csv"
 		 * @param file_2 = "path to B.csv"
@@ -648,7 +648,7 @@ namespace MATOPS
 
 		/**
 		 *
-		 * This is a function to find the Transpose of a BigMatrix and stores it in a csv file.
+		 * @brief This is a function to find the Transpose of a BigMatrix and stores it in a csv file.
 		 * @param path = "path/to/A.csv"
 		 * @param str_path = path to store the Transpose of BigMatrix A.
 		 *
