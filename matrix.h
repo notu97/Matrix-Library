@@ -22,6 +22,9 @@
 #include<string.h>
 
 
+/**
+ * @brief The matrix.h namespace.
+ */
 namespace MATOPS
 {
 
