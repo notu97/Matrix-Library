@@ -181,12 +181,20 @@ namespace MATOPS
 				return *this;
 			}
 
-//			const T& ElementAt(size_t i, size_t j) const
-//				{ return array[i][j]; }
+
 			/**
-			 * Function to read and write value from and to the (i,j)th position of the Matrix
+			 * Function to read value from the (i,j)th position of the Matrix
 			 * @param i = row index
 			 * @param j = column index
+			 * @return
+			 */
+			const T& ElementAt(size_t i, size_t j) const
+					{ return array[i][j]; }
+
+			/**
+			 * Function to write value to the (i,j)th position of the Matrix
+			 * @param i
+			 * @param j
 			 * @return
 			 */
 			T& ElementAt(size_t i, size_t j)
@@ -242,6 +250,7 @@ namespace MATOPS
 								}
 							}
 						}
+						file.close();
 
 					}
 
@@ -263,10 +272,10 @@ namespace MATOPS
 			}
 
 
-/**
- * This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (CSV) files and perform both Multiplication (Stressan's Algorithm) and transpose.
- * @tparam Data1 = Datatype of the BigMatrix. Eg. int, float, double etc.
- */
+		/**
+		 * This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (CSV) files and perform both Multiplication (Stressan's Algorithm) and transpose.
+		 * @tparam Data1 = Datatype of the BigMatrix. Eg. int, float, double etc.
+		 */
 		// BIG MATRIX Multiplication and Transpose
 		template<typename Data1>
 		class BigMatrix
@@ -470,14 +479,21 @@ namespace MATOPS
 		// LOAD from CSV file Template
 //		template<typename Datatype>
 			/**
-			 * Function to load CSV file. This function is internally called by  MATOPS::BigMatrix<Data1>::matmul  and  MATOPS::BigMatrix< Data1 >::Transpose to load the BigMatrix 's to be multiplied or Transposed.
+			 * Function to load CSV file. This function is internally called by  MATOPS::BigMatrix<Data1>::matmul  and  MATOPS::BigMatrix< Data1 >::Transpose to load the BigMatrix 's to be multiplied or Transposed. It throws an error if path is invalid or CSV doesn't exist.
 			 * @param path= "path to CSV file i.e. to be loaded"
-			 * @return
+			 * @return A pointer to the Matrix loaded in memory.
 			 */
 		std::vector<std::vector<Data1>> load_CSV(const std::string &path)
 		{
 		    std::ifstream indata;
 		    indata.open(path);
+
+		    if(indata.fail())
+		    {
+		    	std::cerr<<"File path: '"<<path<<"' doesn't exist\n";
+		    	exit(0);
+		    }
+
 		    std::vector<std::vector<Data1>> dataList;
 		    std::string line = "";
 
@@ -493,7 +509,7 @@ namespace MATOPS
 		        dataList.push_back(temp);
 
 		    }
-
+		    indata.close();
 		    return dataList;
 		}
 
@@ -527,13 +543,10 @@ namespace MATOPS
 		 * @param path = path to a store file (no need to predefine C.csv file in the directory, it gets generated automatically.)
 		 * @param print = True, To see all the Matrices i.e. A,B and C in the output terminal/stdio. \n
 		 *
-		 * @return
-		 * 		Returns a pointer of type Data1** pointing to the C BigMatrix in the Memory. It can be used in the main program to access the (i,j) element of the BigMatrix C.
-		 *
 		 *	Define a BigMatrix object BigMatrix<DataType> MatObj, where DataType can be int, float, double, long etc.\n
-		 *	Then call DataType** Result = MatObj.matmul("path/to/A.csv","path/to/B.csv","path/to/C.csv") from your program. The C.csv file generated file contains C=A*B. Result[i][j] accesses the (i,j)th element of BigMatrix C.
+		 *	Then call MatObj.matmul("path/to/A.csv","path/to/B.csv","path/to/C.csv") from your program. The C.csv file generated file contains C=A*B.
 		 */
-		Data1** matmul(std::string file_1, std::string file_2, std::string path, bool print=false)
+		void matmul(std::string file_1, std::string file_2, std::string path, bool print=false)
 
 				{   // Parse the CSV files and get the Matrices to be multiplied
 
@@ -546,7 +559,7 @@ namespace MATOPS
 
 					if(n_1 != m_2) // Check if inner dimensions of the Matrices Match. If not then Throw error.
 					{
-						std::cerr<<"Matrix Inner Dimensions don't match !!! \n";
+						std::cerr<<"Matrix Inner Dimensions don't match !!! Matrix A dim : "<<m_1<<"x"<<n_1<<" & Matrix B dim : "<<m_2<<"x"<<n_2<<"\n";
 						exit(0);
 					}
 					else  // Begin Multiplication
@@ -607,26 +620,26 @@ namespace MATOPS
 					// Store the Result C into a CSV file, whose location is given by "path"
 						store_csv<Data1>(C, m_1,n_2,path);
 
-						Data1** M=(Data1 **)calloc(m_1,sizeof(Data1*));
-						for(int i=0;i<m_1;i++)
-						{
-							M[i]=(Data1*)calloc(n_2,sizeof(Data1));
-						}
-
-						for(int i=0;i<m_1;i++)
-						{
-							for(int j=0;j<n_2;j++)
-							{
-								M[i][j]=C[i][j];
-							}
-						}
+//						Data1** M=(Data1 **)calloc(m_1,sizeof(Data1*));
+//						for(int i=0;i<m_1;i++)
+//						{
+//							M[i]=(Data1*)calloc(n_2,sizeof(Data1));
+//						}
+//
+//						for(int i=0;i<m_1;i++)
+//						{
+//							for(int j=0;j<n_2;j++)
+//							{
+//								M[i][j]=C[i][j];
+//							}
+//						}
 
 							// Free The memory before quitting
 							free(A);
 							free(B);
 							free(C);
-
-							return M;
+//							free(M);
+							//return M;
 					}
 
 				} // matmul function ends here
@@ -638,11 +651,9 @@ namespace MATOPS
 		 * This is a function to find the Transpose of a BigMatrix and stores it in a csv file.
 		 * @param path = "path/to/A.csv"
 		 * @param str_path = path to store the Transpose of BigMatrix A.
-		 * @return
-		 * 		Returns a pointer of type Data1** pointing to the Transpose of BigMatrix A in the Memory. It can be used in the main program to access the (i,j) element of the Transpose of BigMatrix A
 		 *
 		 */
-		Data1** Transpose(std::string path, std::string str_path)
+		void Transpose(std::string path, std::string str_path)
 			{
 			    std::vector<std::vector<Data1>> MAT= load_CSV(path); // Load the Matrix from CSV file
 
@@ -662,8 +673,35 @@ namespace MATOPS
 				}
 
 				store_csv<Data1>(A,MAT[0].size(),MAT.size(),str_path);
-				return A;
+				free(A);
 			}
+
+		/**
+		 * @brief This is a function to find the Transpose of a BigMatrix and stores it in the same csv file (In-palce transpose).
+		 * @param path = "path/to/A.csv"
+		 */
+		void Transpose(std::string path)
+					{
+					    std::vector<std::vector<Data1>> MAT= load_CSV(path); // Load the Matrix from CSV file
+
+					    Data1** A= (Data1 **)calloc(MAT[0].size(),sizeof(Data1*));
+
+					    for(int i=0;i<MAT[0].size();i++)
+						{
+							A[i]=(Data1*)calloc(MAT.size(),sizeof(Data1));
+						}
+
+						for(int i=0;i<MAT.size();i++)
+						{
+							for(int j=0;j<MAT[0].size();j++)
+							{
+								A[j][i]=MAT[i][j];
+							}
+						}
+
+						store_csv<Data1>(A,MAT[0].size(),MAT.size(),path);
+						free(A);
+					}
 
 			};
 

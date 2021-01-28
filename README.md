@@ -64,7 +64,9 @@ Given a matrix A in A.csv file, we wish to find out its transpose and store it i
 
 ``` C++
 MATOPS::BigMatrix<float> MatObj; // Defining a Matrix object
-MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv"); // Transposing the matrix
+MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv"); // Transposing the matrix and store in a A_trans.csv
+
+MatOnj.Transpose("/path/to/A.csv"); // In-place Matrix transpose.
 
 MatObj.Mat_print("/path/to/A_trans.csv"); // Printing the result
 ```
@@ -91,17 +93,18 @@ int main() {
 	BigMatrix<float> MatObj; // Define float object for Big Matrix
 	
 	// Multiply two Matrices in .csv format and save the result in Ans.csv file.
-	float** a=MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
+	MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
 
 	// Read Matrix A from A.csv, find its Transpose and save it in A_trans.csv
-	float** b=MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv");
+	MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv");
+
+	// In-place Transpose: Read Matrix A from A.csv, find its Transpose and overwrite A.csv
+	MatObj.Transpose("/path/to/A.csv");
+
 
 	// print Matrix in file A.csv
 	MatObj.Mat_print("/path/to/A.csv");
 
-	// free the a and b pointers.
-	free(a);
-	free(b);
 	return 0;
 }
 

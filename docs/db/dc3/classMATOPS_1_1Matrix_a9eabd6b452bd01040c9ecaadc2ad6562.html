@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Matrix Library: MATOPS::Matrix::array</title>
+<title>Matrix Library: MATOPS::Matrix::ElementAt</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('db/dc3/classMATOPS_1_1Matrix_ae6dc2c72b7cdabef4a06e84913056d4d.html','../../');});
+$(document).ready(function(){initNavTree('db/dc3/classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562.html','../../');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -81,8 +81,8 @@ $(document).ready(function(){initNavTree('db/dc3/classMATOPS_1_1Matrix_ae6dc2c72
 </div>
 
 <div class="contents">
-<a id="ae6dc2c72b7cdabef4a06e84913056d4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6dc2c72b7cdabef4a06e84913056d4d">&#9670;&nbsp;</a></span>array</h2>
+<a id="a9eabd6b452bd01040c9ecaadc2ad6562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eabd6b452bd01040c9ecaadc2ad6562">&#9670;&nbsp;</a></span>ElementAt() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -93,16 +93,39 @@ template&lt;typename T, size_t m, size_t n&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T** <a class="el" href="../../db/dc3/classMATOPS_1_1Matrix.html">MATOPS::Matrix</a>&lt; T, m, n &gt;::array</td>
+          <td class="memname">const T&amp; <a class="el" href="../../db/dc3/classMATOPS_1_1Matrix.html">MATOPS::Matrix</a>&lt; T, m, n &gt;::ElementAt </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<p>Function to read value from the (i,j)th position of the <a class="el" href="../../db/dc3/classMATOPS_1_1Matrix.html" title="This class is for matrices of smaller size. The user can define a Matrix A of size m x n of Datatype ...">Matrix</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>= row index </td></tr>
+    <tr><td class="paramname">j</td><td>= column index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    { <span class="keywordflow">return</span> <a class="code" href="../../db/dc3/classMATOPS_1_1Matrix_ae6dc2c72b7cdabef4a06e84913056d4d.html#ae6dc2c72b7cdabef4a06e84913056d4d">array</a>[i][j]; }</div><div class="ttc" id="classMATOPS_1_1Matrix_ae6dc2c72b7cdabef4a06e84913056d4d_html_ae6dc2c72b7cdabef4a06e84913056d4d"><div class="ttname"><a href="../../db/dc3/classMATOPS_1_1Matrix_ae6dc2c72b7cdabef4a06e84913056d4d.html#ae6dc2c72b7cdabef4a06e84913056d4d">MATOPS::Matrix::array</a></div><div class="ttdeci">T ** array</div><div class="ttdef"><b>Definition:</b> matrix.h:39</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

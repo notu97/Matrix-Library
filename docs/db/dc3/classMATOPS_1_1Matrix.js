@@ -5,6 +5,7 @@ var classMATOPS_1_1Matrix =
     [ "Matrix", "db/dc3/classMATOPS_1_1Matrix_ab665ea80cebcf2656c51dac5a86efd7b.html#ab665ea80cebcf2656c51dac5a86efd7b", null ],
     [ "Matrix", "db/dc3/classMATOPS_1_1Matrix_a6daf4c8232f2e9b0b1297a6e08eb4f1c.html#a6daf4c8232f2e9b0b1297a6e08eb4f1c", null ],
     [ "cols", "db/dc3/classMATOPS_1_1Matrix_a4fde0b19d8cd6ca18c24d836355a2e5a.html#a4fde0b19d8cd6ca18c24d836355a2e5a", null ],
+    [ "ElementAt", "db/dc3/classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562.html#a9eabd6b452bd01040c9ecaadc2ad6562", null ],
     [ "ElementAt", "db/dc3/classMATOPS_1_1Matrix_a28edfa65a7b0f5cbeb96d91bfaee4d6a.html#a28edfa65a7b0f5cbeb96d91bfaee4d6a", null ],
     [ "operator=", "db/dc3/classMATOPS_1_1Matrix_a4512ee518878124f54e3c596d2847d86.html#a4512ee518878124f54e3c596d2847d86", null ],
     [ "rows", "db/dc3/classMATOPS_1_1Matrix_a3eb38202054437704ba4ceba78959d5b.html#a3eb38202054437704ba4ceba78959d5b", null ],
