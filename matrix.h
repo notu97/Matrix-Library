@@ -22,6 +22,7 @@
 #include<string.h>
 
 
+
 /**
  * @brief The matrix.h namespace.
  */
@@ -348,10 +349,29 @@ namespace MATOPS
 			 */
 			Data1** StrassenMultiply(Data1** A, Data1** B, int n)
 			{
-				if(n==1)
+				/* Naive Stressan's Algorithm
+				 * if(n==1)
 				{
 					Data1** C=Init_matrix(1);
 					C[0][0]=A[0][0]*B[0][0];
+					return C;
+				}*/
+
+				// Once array size of 64x64 in reached we switch to the O(n^3) Matrix Multiplication solution, since after this stage the recursion calls
+				// become a burden to the whole algorithm and we end up getting high execution time.
+				if(n==64)
+				{
+					Data1** C=Init_matrix(n);
+					for(int i=0;i<n;i++)
+					{
+						for(int j=0;j<n;j++)
+						{
+							for(int k=0;k<n;k++)
+							{
+								C[i][j]+=A[i][k]*B[k][j];
+							}
+						}
+					}
 					return C;
 				}
 
