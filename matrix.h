@@ -152,10 +152,10 @@ namespace MATOPS
 				{
 					Matrix<T,m,k> result;
 
-					for (size_t i_m = 0; i_m != m; ++i_m) {
-						for (size_t i_k = 0; i_k != k; ++i_k) {
+					for (size_t i_m = 0; i_m < m; ++i_m) {
+						for (size_t i_k = 0; i_k < k; ++i_k) {
 
-							for (size_t i_n = 0; i_n != m; ++i_n) {
+							for (size_t i_n = 0; i_n < n; ++i_n) {
 							result.ElementAt(i_m,i_k) += A.ElementAt(i_m,i_n) * B.ElementAt(i_n,i_k);
 							}
 						}
