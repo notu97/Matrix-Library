@@ -37,7 +37,7 @@ std::cout<< A.transpose();
 #### Multiplying 2 small Matrices
 ``` C++
 MATOPS::Matrix<float,3,4> A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};
-MATOPS::Matrix<float,4,2> B{{1,2},{5,6},{9,10},{3,4},{7,8}};
+MATOPS::Matrix<float,4,2> B{{1,2},{5,6},{9,10},{3,4}};
 MATOPS::Matrix<float,3,2> C=A*B;
 
 std::cout<< C;
