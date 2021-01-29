@@ -104,23 +104,118 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2050c01cf601a211d3abc45515b8749d"><td class="memTemplParams" colspan="2">template&lt;typename Data2 &gt; </td></tr>
-<tr class="memitem:a2050c01cf601a211d3abc45515b8749d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dba/namespaceMATOPS_a2050c01cf601a211d3abc45515b8749d.html#a2050c01cf601a211d3abc45515b8749d">store_csv</a> (Data2 **C, int m_1, int n_2, std::string path)</td></tr>
-<tr class="memdesc:a2050c01cf601a211d3abc45515b8749d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function template to Store csv file at a given destination file. This function is internally called by matmul and Transpose function to store the Resultant <a class="el" href="../../d1/d6c/classMATOPS_1_1BigMatrix.html" title="This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (...">BigMatrix</a> obtained.  <a href="../../de/dba/namespaceMATOPS_a2050c01cf601a211d3abc45515b8749d.html#a2050c01cf601a211d3abc45515b8749d">More...</a><br /></td></tr>
+<tr class="memitem:a2050c01cf601a211d3abc45515b8749d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dba/namespaceMATOPS.html#a2050c01cf601a211d3abc45515b8749d">store_csv</a> (Data2 **C, int m_1, int n_2, std::string path)</td></tr>
+<tr class="memdesc:a2050c01cf601a211d3abc45515b8749d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function template to Store csv file at a given destination file. This function is internally called by matmul and Transpose function to store the Resultant <a class="el" href="../../d1/d6c/classMATOPS_1_1BigMatrix.html" title="This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (...">BigMatrix</a> obtained.  <a href="#a2050c01cf601a211d3abc45515b8749d">More...</a><br /></td></tr>
 <tr class="separator:a2050c01cf601a211d3abc45515b8749d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a058c07f65db98cd52617d3d5c4de3b42"><td class="memTemplParams" colspan="2">template&lt;typename My_data &gt; </td></tr>
-<tr class="memitem:a058c07f65db98cd52617d3d5c4de3b42"><td class="memTemplItemLeft" align="right" valign="top">My_data&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dba/namespaceMATOPS_a058c07f65db98cd52617d3d5c4de3b42.html#a058c07f65db98cd52617d3d5c4de3b42">convert_to</a> (const std::string &amp;str)</td></tr>
-<tr class="memdesc:a058c07f65db98cd52617d3d5c4de3b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function template to convert variable type from string to int,float, double or any other Datatype.  <a href="../../de/dba/namespaceMATOPS_a058c07f65db98cd52617d3d5c4de3b42.html#a058c07f65db98cd52617d3d5c4de3b42">More...</a><br /></td></tr>
+<tr class="memitem:a058c07f65db98cd52617d3d5c4de3b42"><td class="memTemplItemLeft" align="right" valign="top">My_data&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dba/namespaceMATOPS.html#a058c07f65db98cd52617d3d5c4de3b42">convert_to</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:a058c07f65db98cd52617d3d5c4de3b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function template to convert variable type from string to int,float, double or any other Datatype.  <a href="#a058c07f65db98cd52617d3d5c4de3b42">More...</a><br /></td></tr>
 <tr class="separator:a058c07f65db98cd52617d3d5c4de3b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="../../dd/df4/matrix_8h.html">matrix.h</a> namespace. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a058c07f65db98cd52617d3d5c4de3b42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a058c07f65db98cd52617d3d5c4de3b42">&#9670;&nbsp;</a></span>convert_to()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename My_data &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">My_data MATOPS::convert_to </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function template to convert variable type from string to int,float, double or any other Datatype. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">My_data</td><td>= Datatype into which we want to convert the string input from CSV files. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>= String input from the Csv file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns Converted number from string to My_data. </dd></dl>
+<div class="fragment"><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            {</div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                std::istringstream ss(str);</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                My_data num;</div><div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                ss&gt;&gt;num;</div><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                <span class="keywordflow">return</span> num;</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            }</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a2050c01cf601a211d3abc45515b8749d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2050c01cf601a211d3abc45515b8749d">&#9670;&nbsp;</a></span>store_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Data2 &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void MATOPS::store_csv </td>
+          <td>(</td>
+          <td class="paramtype">Data2 **&#160;</td>
+          <td class="paramname"><em>C</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>m_1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function template to Store csv file at a given destination file. This function is internally called by matmul and Transpose function to store the Resultant <a class="el" href="../../d1/d6c/classMATOPS_1_1BigMatrix.html" title="This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (...">BigMatrix</a> obtained. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Data2</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">C</td><td>= A Pointer pointing to the 2D <a class="el" href="../../d1/d6c/classMATOPS_1_1BigMatrix.html" title="This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (...">BigMatrix</a> in the memory </td></tr>
+    <tr><td class="paramname">m_1</td><td>= No. of Rows of the <a class="el" href="../../d1/d6c/classMATOPS_1_1BigMatrix.html" title="This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (...">BigMatrix</a> </td></tr>
+    <tr><td class="paramname">n_2</td><td>= No. of Columns of the <a class="el" href="../../d1/d6c/classMATOPS_1_1BigMatrix.html" title="This is the Class for handling Large Matrices. It takes in large Matrices as comma-separated values (...">BigMatrix</a> </td></tr>
+    <tr><td class="paramname">path</td><td>= "path to destination csv file" </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    {</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        std::ofstream file;</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        file.open(path);</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;m_1;i++)</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                        {</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt;n_2;j++)</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                            {</div><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                file&lt;&lt;C[i][j];</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                <span class="keywordflow">if</span>(j&lt;(n_2)-1)</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                {</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                    file&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>;</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                }</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                                <span class="keywordflow">else</span></div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                {</div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                    file&lt;&lt;<span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                                }</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                            }</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        }</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        file.close();</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    }</div></div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../de/dba/namespaceMATOPS.html">MATOPS</a></li>
-    <li class="footer">Generated on Thu Jan 28 2021 16:52:51 for Matrix Library by
+    <li class="footer">Generated on Thu Jan 28 2021 17:11:19 for Matrix Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

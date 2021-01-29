@@ -7,7 +7,7 @@ Matrix multiplication for small matrices is done using the straight forward solu
 For Large Matrices the input is taken in a Comma Separated Variable (csv) file format, and the output is stored in a csv file. For small matrices the user has to manually enter the values of the matrix either using a initializer_list format or as a 2D vector. 
 
 ## Installation
-Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using #include<matirx.h>
+Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using #include"matirx.h"
 
 
 ## Usage
@@ -74,7 +74,7 @@ MatObj.Mat_print("/path/to/A_trans.csv"); // Printing the result
 ## Example code
 ```  C++
 #include<iostream>
-#include <matrix.h>
+#include "matrix.h"
 #include<vector>
 
 using namespace std;
