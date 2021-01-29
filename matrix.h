@@ -358,7 +358,8 @@ namespace MATOPS
 				}*/
 
 				// Once array size of 64x64 in reached we switch to the O(n^3) Matrix Multiplication solution, since after this stage the recursion calls
-				// become a burden to the whole algorithm and we end up getting high execution time.
+				// become a burden to the whole algorithm and we end up getting high execution time. This value of "64" is architecture dependent and will
+				// vary from machine to machine.
 				if(n==64)
 				{
 					Data1** C=Init_matrix(n);
