@@ -54,7 +54,7 @@ Let there be 2 matrices A and B stored in 2 csv files namely A.csv and B.csv rep
 ``` C++
 MATOPS::BigMatrix<float> MatObj; // Defining a Matrix object
 
-// Multiplying the two Matrices A.csv, B.csv and storing them in Ans.csv
+// Multiplying the two Matrices A.csv, B.csv and storing the result in Ans.csv
 MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
 
 MatObj.Mat_print("/path/to/Ans.csv"); // Printing the Answer

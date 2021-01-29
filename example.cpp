@@ -22,40 +22,38 @@
 
 
 
-#include <iostream>
+#include<iostream>
 #include <matrix.h>
-
 #include<vector>
 
 using namespace std;
-using namespace MATOPS;
+using namespace MATOPS; //namespace for matrix.h
 
-/**
-* Call the function and proceed 
-*
-*/
+
 int main() {
-	cout << "!!!Hello World!!! \n" << endl; // prints !!!Hello World!!!
-
-	cout<<__cplusplus<<'\n';
 	
-	Matrix<double,2,4> B{{1,2,4,5},{4,6,7,8}};
+	// Define matrices of size 2x4 and 2x2 of type double
+	Matrix<double,2,4> B{{1,2,4,5},{4,6,7,8}}; 
 	Matrix<double,2,2> A{{1,2},{2,2}};
+	
+	// Print the Matrices A and B followed by Product A*B and transpose of A
+	cout<<A<<"\n \n"<<B<<"\n \n"<< A*B<<"\n\n"<<A.transpose()<<"\n\n";
 
-	cout<<A<<"\n \n"<<B<<"\n \n"<< A*B<<"\n\n";
+	BigMatrix<float> MatObj; // Define float object for Big Matrix
+	
+	// Multiply two Matrices in .csv format and save the result in Ans.csv file.
+	MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
 
-	BigMatrix<float> MatObj;
+	// Read Matrix A from A.csv, find its Transpose and save it in A_trans.csv
+	MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv");
 
-	float** a=MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
+	// In-place Transpose: Read Matrix A from A.csv, find its Transpose and overwrite A.csv
+	MatObj.Transpose("/path/to/A.csv");
 
-	//cout<<a[0][0]<<" "<<a[1][0]<<" "<<a[2][0]<<" "<<a[3][0]<<" "<<a[4][0]<<" \n\n";
-
-	float** b=MatObj.Transpose("/path/to/A.csv", "/path/to/A_tras.csv");
-
+	// print Matrix in file A.csv
 	MatObj.Mat_print("/path/to/A.csv");
 
-	free(a);
-	free(b);
 	return 0;
 }
+
 
