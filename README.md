@@ -8,7 +8,7 @@ For Large Matrices the input is taken in a Comma Separated Variable (csv) file f
 
 ## Installation and Configuration
 Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using ```#include"matirx.h"```. Inorder to get the best performance from this library for large Matrix Multiplicaiton, one has to experimentally find out and set the ```LEAF_SIZE``` for the Stressan's Multiplcation function. The ```LEAF_SIZE``` value modifies the Resursion base condition. Once a Matrix of size ```LEAF_SIZE``` x ```LEAF_SIZE``` or lesser is reached we shift to the Native ```O(n^3)``` Matrix Multiplication solution. The Value of ```LEAF_SIZE``` has the following effect:
-* A very high value of ```LEAF_SIZE``` leads to lesser resursion calls but we also end up giving more weightage to the ```O(n^3)``` solution. 
+* A very high value of ```LEAF_SIZE``` leads to lesser resursion calls but ends up giving more weightage to the ```O(n^3)``` solution. 
 * On the other hand a very low ```LEAF_SIZE``` value leads to higher number of resursion calls and gives lesser weightage to the ```O(n^3)``` solution. 
 
 Both the above scenarios adversely effects the execution time of Matrix Multiplication and added to that the value of ```LEAF_SIZE``` will vary from machine to machine. Thus we have to experimentally determine the ```LEAF_SIZE``` value from the computer on which this library will be used. In order to do this a [configure_lib.cpp](https://github.com/notu97/Matrix-Library/blob/main/configure_lib.cpp) and its corresponding object file ```configure_lib``` is provided with this library. This file performs Matrix Multiplication between 2 large matrices A & B (the config file asks the path to A.csv and B.csv while running) using the ```matmul``` funtion (defined in class ```BigMatrix```) for ```N_epoch``` no. of times for a given ```leaf_size``` and finds the average execution times for this particular ```leaf_size```. Finally ```leaf_size``` is also varied between ```SIZE_Lower``` and ```SIZE_Upper```, whichever ```leaf_size``` value gives the lowest execution time is our most optimal value of ```LEAF_SIZE```. The command to find the optimal ```LEAF_SIZE``` is as follows:
@@ -19,8 +19,12 @@ $ g++ configure_lib.cpp -o configure_lib
 $ ./configure_lib <N_epoch> <SIZE_Lower> <SIZE_Upper>
 
 ```
+Note: Since I have used the most simplest Stressan's Algorithm implmentation, where by both the input matrices are padded with zeros to make there size equal to the next largest power of 2, the matrix size is always a power of 2. Hence the ```SIZE_Lower``` and ```SIZE_Upper``` values should always be a power of 2.
 
-On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and  ```N_epoch```= 10, ```SIZE_Lower```=8 ```SIZE_Upper```=512 the optimal ```LEAF_SIZE``` was found out to be ```64``` i.e. once we encounter an array of size less than or equal to 64x64 we shift to ```O(n^3)``` solution of Matrix Multiplication.
+On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and  ```N_epoch```= 10, ```SIZE_Lower```=16 ```SIZE_Upper```=128 the optimal ```LEAF_SIZE``` was found out to be ```64``` i.e. once we encounter an array of size less than or equal to 64x64 we shift to ```O(n^3)``` solution of Matrix Multiplication.
+
+![](docs/Time(Sec) vs Leaf_Size plot.png)
+
 
 
 ## Usage
