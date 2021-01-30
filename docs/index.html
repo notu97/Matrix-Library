@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>For Large Matrices the input is taken in a Comma Separated Variable (csv) file format, and the output is stored in a csv file. For small matrices the user has to manually enter the values of the matrix either using a initializer_list format or as a 2D vector.</p>
 <h2>Installation and Configuration</h2>
 <p>Just include the <a href="https://github.com/notu97/Matrix-Library/blob/main/matrix.h">matrix.h</a> header file in your C++ working directory and include it in your main cpp code using <code>#include"matirx.h"</code>. Inorder to have the best performance from this library for large Matrix Multiplicaiton, one has to experimentally find out and set the <code>LEAF_SIZE</code> for the Stressan's Multiplcation function. In order to find this value two randomly initialized 2000x2000 matrices were multiplied (for <code>N_epoch</code>= 10 times, each time the execution time was recorded and eventually the average of all the 10 reading were taken) with differnt values of <code>LEAF_SIZE</code> ranging from <code>SIZE_Lower</code>=8 to <code>SIZE_upper</code>=512. For my computer the optimal <code>LEAF_SIZE</code> was found to be <code>64</code>. The <code>LEAF_SIZE</code> will vary from computer to computer, hence a <a href="https://github.com/notu97/Matrix-Library/blob/main/configure_lib.cpp">configure_lib.cpp</a> and its correponding object file <code>configure_lib</code> is provided with this library. The command to find the optimal <code>LEAF_SIZE</code> is as follows:</p>
-<div class="fragment"><div class="line">./configure_lib &lt;N_epoch&gt; &lt;SIZE_Lower&gt; &lt;SIE_upper&gt;</div></div><!-- fragment --><p> The program should give the best <code>LEAF_SIZE</code> as output.</p>
+<div class="fragment"><div class="line">./configure_lib &lt;N_epoch&gt; &lt;SIZE_Lower&gt; &lt;SIZE_upper&gt;</div></div><!-- fragment --><p> The program should give the best <code>LEAF_SIZE</code> as output.</p>
 <h2>Usage</h2>
 <h3>Matrix Class (for small Matrices)</h3>
 <h4>Defining a small Matrix of size 3x4 of type float</h4>
@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jan 30 2021 05:38:49 for Matrix Library by
+    <li class="footer">Generated on Sat Jan 30 2021 05:39:31 for Matrix Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

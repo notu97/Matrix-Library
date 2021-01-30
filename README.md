@@ -11,7 +11,7 @@ Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/m
 
 ``` sh
 
-./configure_lib <N_epoch> <SIZE_Lower> <SIE_upper>
+./configure_lib <N_epoch> <SIZE_Lower> <SIZE_upper>
 
 ```
 The program should give the best ```LEAF_SIZE``` as output.
