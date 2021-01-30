@@ -1,6 +1,6 @@
 /**
  * @file   example.cpp
- *
+ * @brief  A simple example code illustrating how to use the Library
  * @date Jan 24, 2021
  * @author shiladitya
  *

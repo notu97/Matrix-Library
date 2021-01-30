@@ -1,6 +1,6 @@
 /**
  * @file   matrix.h
- *
+ * @brief  The main Matrix library header file.
  * @date   Jan 25, 2021
  * @author Shiladitya Biswas
  *
