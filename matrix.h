@@ -1,12 +1,12 @@
 /**
- * @file   matrix.h
- * @brief  The main Matrix library header file.
- * @date   Jan 25, 2021
- * @author Shiladitya Biswas
- *
- *
- * This is a simple Matrix operation library, to Multiply 2 Matrices and find the transpose of a Matrix. The library is divided into two parts, one for small Matrices (i.e. Matrix multiplication is performed with O(^3) time complexity) and another for large Matrices where Stressan's Algorithm (Time Complexity: O(n^2.8)) is used to Multiply two Matrices.
- *
+ * @file matrix.h
+ * @author Shiladitya Biswas (https://github.com/notu97)
+ * @brief The main Matrix library header file. A simple Matrix operation library, to Multiply 2 Matrices and find the transpose of a Matrix. The library is divided into two parts, one for small Matrices (i.e. Matrix multiplication is performed with O(^3) time complexity) and another for large Matrices where Stressan's Algorithm (Time Complexity: O(n^2.8)) is used to Multiply two Matrices.
+ * @version 0.1
+ * @date 2021-01-30
+ * 
+ * @copyright Copyright (c) 2021
+ * 
  */
 
 #ifndef MATRIX_H_

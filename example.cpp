@@ -2,7 +2,7 @@
  * @file   example.cpp
  * @brief  A simple example code illustrating how to use the Library
  * @date Jan 24, 2021
- * @author shiladitya
+ * @author Shiladitya Biswas
  *
  *
  * This is an example code illustrating how to use the matrix.h library.

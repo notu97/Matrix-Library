@@ -1,6 +1,6 @@
 /**
  * @file configure_lib.cpp
- * @author Shiladitya
+ * @author Shiladitya Biswas
  * @brief A Cpp configuration file to find the best leaf size for Stressan's Algorithm. This file evaluates the execution time of the matmul function in class BigMatrix as function of different LEAF_SIZE.
  * @version 0.1
  * @date 2021-01-29
