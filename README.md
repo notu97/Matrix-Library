@@ -23,7 +23,8 @@ Note: Since I have used the most simplest Stressan's Algorithm implmentation, wh
 
 On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and  ```N_epoch```= 10, ```SIZE_Lower```=16 ```SIZE_Upper```=128 the optimal ```LEAF_SIZE``` was found out to be ```64``` i.e. once we encounter an array of size less than or equal to 64x64 we shift to ```O(n^3)``` solution of Matrix Multiplication. A plot of execution time as a function of ```LEAF_SIZE``` on my computer is shown below.
 
-<!-- ![Time_vs_leaf_size](images/Time(Sec)_vs_Leaf_Size_plot.png) -->
+![](images/Time(Sec)_vs_Leaf_Size_plot.png)
+
 ![Time_vs_leaf_size](Time(Sec)_vs_Leaf_Size_plot.png)
 
 
