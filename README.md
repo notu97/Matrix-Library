@@ -6,8 +6,14 @@ Matrix multiplication for small matrices is done using the straight forward solu
 
 For Large Matrices the input is taken in a Comma Separated Variable (csv) file format, and the output is stored in a csv file. For small matrices the user has to manually enter the values of the matrix either using a initializer_list format or as a 2D vector. 
 
-## Installation
-Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using #include"matirx.h"
+## Installation and Configuration
+Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using #include"matirx.h". Inorder to have the best performance from this library in terms of Matrix Multiplicaiton, on has to experimentally find out and set the LEAF_SIZE for the Stressan's Multiplcation Library. In order to find this value two 2000x2000 matrices were multiplied (for N_epoch 10 times, for each time the execution time was recorded and eventually the average of all the 10 reading were taken) with differnt values of LEAF_SIZE ranging from SIZE_Lower=8 to SIZE_upper=512. For my computer the optimal ```LEAF_SIZE``` was found to be 64. The ```LEAF_SIZE``` will vary from computer to computer, hence a [configure_lib.cpp](https://github.com/notu97/Matrix-Library/blob/main/configure_lib.cpp) and its correponding object file ```configure_lib``` is provided with this library. The command to find the optimal ```LEAF_SIZE``` is as follows:
+
+``` sh
+
+./configure_lib <N_epoch> <SIZE_Lower> <SIE_upper>
+
+```
 
 
 ## Usage
