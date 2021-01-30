@@ -408,18 +408,38 @@ namespace MATOPS
 					}
 				}
 				// Determine the Strassen's Coefficients
-				Data1** P1 = StrassenMultiply(A11, sub(B12, B22, k), k);
-				Data1** P2 = StrassenMultiply(add(A11, A12, k), B22, k);
-				Data1** P3 = StrassenMultiply(add(A21, A22, k), B11, k);
-				Data1** P4 = StrassenMultiply(A22, sub(B21, B11, k), k);
-				Data1** P5 = StrassenMultiply(add(A11, A22, k), add(B11, B22, k), k);
-				Data1** P6 = StrassenMultiply(sub(A12, A22, k), add(B21, B22, k), k);
-				Data1** P7 = StrassenMultiply(sub(A11, A21, k), add(B11, B12, k), k);
+				Data1** TEMP_B12_B22 = sub(B12, B22, k);
+				Data1** TEMP_A11_A12 = add(A11, A12, k);
+				Data1** TEMP_A21_A22 = add(A21, A22, k);
+				Data1** TEMP_B21_B11 = sub(B21, B11, k);
 
-				Data1** C11 = sub(add(add(P5, P4, k), P6, k), P2, k);
+
+				Data1** P1 = StrassenMultiply(A11, TEMP_B12_B22, k);
+				Data1** P2 = StrassenMultiply(TEMP_A11_A12, B22, k);
+				Data1** P3 = StrassenMultiply(TEMP_A21_A22, B11, k);
+				Data1** P4 = StrassenMultiply(A22, TEMP_B21_B11, k);
+
+				Data1** TEMP_A11_A22 = add(A11, A22, k);
+				Data1** TEMP_B11_B22 = add(B11, B22, k);
+				Data1** TEMP_A12_A22 = sub(A12, A22, k);
+				Data1** TEMP_B21_B22 = add(B21, B22, k);
+				Data1** TEMP_A11_A21 = sub(A11, A21, k);
+				Data1** TEMP_B11_B12 = add(B11, B12, k);
+
+				Data1** P5 = StrassenMultiply(TEMP_A11_A22, TEMP_B11_B22, k);
+				Data1** P6 = StrassenMultiply(TEMP_A12_A22, TEMP_B21_B22, k);
+				Data1** P7 = StrassenMultiply(TEMP_A11_A21, TEMP_B11_B12, k);
+
+				Data1** TEMP_P5_P4 = add(P5, P4, k);
+				Data1** TEMP_P5_P4_P6 = add(TEMP_P5_P4, P6, k);
+				Data1** TEMP_P5_P1 = add(P5, P1, k);
+				Data1** TEMP_P5_P1_P3 = sub(TEMP_P5_P1, P3, k);
+
+
+				Data1** C11 = sub(TEMP_P5_P4_P6, P2, k);
 				Data1** C12 = add(P1, P2, k);
 				Data1** C21 = add(P3, P4, k);
-				Data1** C22 = sub(sub(add(P5, P1, k), P3, k), P7, k);
+				Data1** C22 = sub(TEMP_P5_P1_P3, P7, k);
 
 				// Building the returning C Matrix
 
@@ -435,6 +455,23 @@ namespace MATOPS
 				}
 
 				for(int i=0; i<k; i++) {
+						free(TEMP_B12_B22[i]);
+						free(TEMP_A11_A12[i]);
+						free(TEMP_A21_A22[i]);
+						free(TEMP_B21_B11[i]);
+
+						free(TEMP_A11_A22[i]);
+						free(TEMP_B11_B22[i]);
+						free(TEMP_A12_A22[i]);
+						free(TEMP_B21_B22[i]);
+						free(TEMP_A11_A21[i]);
+						free(TEMP_B11_B12[i]);
+
+						free(TEMP_P5_P4[i]);
+						free(TEMP_P5_P4_P6[i]);
+						free(TEMP_P5_P1[i]);
+						free(TEMP_P5_P1_P3[i]);
+
 				        free(A11[i]);
 				        free(A12[i]);
 				        free(A21[i]);
@@ -455,6 +492,23 @@ namespace MATOPS
 				        free(C21[i]);
 				        free(C22[i]);
 				    }
+
+					free(TEMP_B12_B22);
+					free(TEMP_A11_A12);
+					free(TEMP_A21_A22);
+					free(TEMP_B21_B11);
+
+					free(TEMP_A11_A22);
+					free(TEMP_B11_B22);
+					free(TEMP_A12_A22);
+					free(TEMP_B21_B22);
+					free(TEMP_A11_A21);
+					free(TEMP_B11_B12);
+
+					free(TEMP_P5_P4);
+					free(TEMP_P5_P4_P6);
+					free(TEMP_P5_P1);
+					free(TEMP_P5_P1_P3);
 
 					free(A11);
 				    free(A12);
@@ -655,6 +709,13 @@ namespace MATOPS
 						store_csv<Data1>(C, m_1,n_2,path);
 
 						// Free The memory before quitting
+						for(int i=0;i<dim_n;i++)
+						{
+							free(A[i]);
+							free(B[i]);
+							free(C[i]);
+						}
+
 						free(A);
 						free(B);
 						free(C);
@@ -692,6 +753,10 @@ namespace MATOPS
 				}
 
 				store_csv<Data1>(A,MAT[0].size(),MAT.size(),str_path);
+				for(int i=0;i<MAT[0].size();i++)
+				{
+					free(A[i]);
+				}
 				free(A);
 			}
 
@@ -719,7 +784,14 @@ namespace MATOPS
 						}
 
 						store_csv<Data1>(A,MAT[0].size(),MAT.size(),path);
+						store_csv<Data1>(A,MAT[0].size(),MAT.size(),path);
+
+						for(int i=0;i<MAT[0].size();i++)
+						{
+							free(A[i]);
+						}
 						free(A);
+
 					}
 
 			};
