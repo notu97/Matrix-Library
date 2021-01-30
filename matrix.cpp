@@ -1,6 +1,6 @@
 /**
  * @file matrix.cpp
- * @author Shiladitya Biswas (you@domain.com)
+ * @author Shiladitya Biswas (https://github.com/notu97)
  * @brief matrix.cpp file for adding future functionalities to the existing library
  * @version 0.1
  * @date 2021-01-30
