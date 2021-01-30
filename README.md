@@ -7,14 +7,21 @@ Matrix multiplication for small matrices is done using the straight forward solu
 For Large Matrices the input is taken in a Comma Separated Variable (csv) file format, and the output is stored in a csv file. For small matrices the user has to manually enter the values of the matrix either using a initializer_list format or as a 2D vector. 
 
 ## Installation and Configuration
-Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using ```#include"matirx.h"```. Inorder to have the best performance from this library for large Matrix Multiplicaiton, one has to experimentally find out and set the ```LEAF_SIZE``` for the Stressan's Multiplcation function. In order to find this value two randomly initialized 2000x2000 matrices were multiplied (for ```N_epoch```= 10 times, each time the execution time was recorded and eventually the average of all the 10 reading were taken) with differnt values of ```LEAF_SIZE``` ranging from ```SIZE_Lower```=8 to ```SIZE_upper```=512. For my computer the optimal ```LEAF_SIZE``` was found to be ```64```. The ```LEAF_SIZE``` will vary from computer to computer, hence a [configure_lib.cpp](https://github.com/notu97/Matrix-Library/blob/main/configure_lib.cpp) and its correponding object file ```configure_lib``` is provided with this library. The command to find the optimal ```LEAF_SIZE``` is as follows:
+Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using ```#include"matirx.h"```. Inorder to get the best performance from this library for large Matrix Multiplicaiton, one has to experimentally find out and set the ```LEAF_SIZE``` for the Stressan's Multiplcation function. The ```LEAF_SIZE``` value modifies the Resursion base condition. Once a Matrix of size ```LEAF_SIZE``` x ```LEAF_SIZE``` or lesser is reached we shift to the Native ```O(n^3)``` Matrix Multiplication solution. The Value of ```LEAF_SIZE``` has the following effect:
+* A very high value of ```LEAF_SIZE``` leads to lesser resursion calls but we also end up giving more weightage to the ```O(n^3)``` solution. 
+* On the other hand a very low ```LEAF_SIZE``` value leads to higher number of resursion calls and gives lesser weightage to the ```O(n^3)``` solution. 
+
+Both the above scenarios adversely effects the execution time of Matrix Multiplication and added to that the value of ```LEAF_SIZE``` will vary from machine to machine. Thus we have to experimentally determine the ```LEAF_SIZE``` value from the computer on which this library will be used. In order to do this a [configure_lib.cpp](https://github.com/notu97/Matrix-Library/blob/main/configure_lib.cpp) and its corresponding object file ```configure_lib``` is provided with this library. This file performs Matrix Multiplication between 2 large matrices A & B (the config file asks the path to A.csv and B.csv while running) using the ```matmul``` funtion (defined in class ```BigMatrix```) for ```N_epoch``` no. of times for a given ```leaf_size``` and finds the average execution times for this particular ```leaf_size```. Finally ```leaf_size``` is also varied between ```SIZE_Lower``` and ```SIZE_Upper```, whichever ```leaf_size``` value gives the lowest execution time is our most optimal value of ```LEAF_SIZE```. The command to find the optimal ```LEAF_SIZE``` is as follows:
 
 ``` sh
 
-./configure_lib <N_epoch> <SIZE_Lower> <SIZE_upper>
+$ g++ configure_lib.cpp -o configure_lib
+$ ./configure_lib <N_epoch> <SIZE_Lower> <SIZE_Upper>
 
 ```
-The program should give the best ```LEAF_SIZE``` as output.
+
+On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and  ```N_epoch```= 10, ```SIZE_Lower```=8 ```SIZE_Upper```=512 the optimal ```LEAF_SIZE``` was found out to be ```64``` i.e. once we encounter an array of size less than or equal to 64x64 we shift to ```O(n^3)``` solution of Matrix Multiplication.
+
 
 ## Usage
 ### Matrix Class (for small Matrices)
