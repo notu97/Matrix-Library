@@ -454,6 +454,7 @@ namespace MATOPS
 					}
 				}
 
+				// Free up all calloced memory.
 				for(int i=0; i<k; i++) {
 						free(TEMP_B12_B22[i]);
 						free(TEMP_A11_A12[i]);
