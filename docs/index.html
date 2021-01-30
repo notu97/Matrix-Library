@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </ul>
 <p>Both the above scenarios adversely effects the execution time of Matrix Multiplication and added to that the value of <code>LEAF_SIZE</code> will vary from machine to machine. Thus we have to experimentally determine the <code>LEAF_SIZE</code> value from the computer on which this library will be used. In order to do this a <a href="https://github.com/notu97/Matrix-Library/blob/main/configure_lib.cpp">configure_lib.cpp</a> and its corresponding object file <code>configure_lib</code> is provided with this library. This file performs Matrix Multiplication between 2 large matrices A &amp; B (the config file asks the path to A.csv and B.csv while running) using the <code>matmul</code> funtion (defined in class <code>BigMatrix</code>) for <code>N_epoch</code> no. of times for a given <code>leaf_size</code> and finds the average execution times for this particular <code>leaf_size</code>. Finally <code>leaf_size</code> is also varied between <code>SIZE_Lower</code> and <code>SIZE_Upper</code>, whichever <code>leaf_size</code> value gives the lowest execution time is our most optimal value of <code>LEAF_SIZE</code>. The command to find the optimal <code>LEAF_SIZE</code> is as follows:</p>
 <div class="fragment"><div class="line">$ g++ configure_lib.cpp -o configure_lib</div><div class="line">$ ./configure_lib &lt;N_epoch&gt; &lt;SIZE_Lower&gt; &lt;SIZE_Upper&gt;</div></div><!-- fragment --><p> Note: Since I have used the most simplest Stressan's Algorithm implmentation, where by both the input matrices are padded with zeros to make there size equal to the next largest power of 2, the matrix size is always a power of 2. Hence the <code>SIZE_Lower</code> and <code>SIZE_Upper</code> values should always be a power of 2.</p>
-<p>On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and <code>N_epoch</code>= 10, <code>SIZE_Lower</code>=16 <code>SIZE_Upper</code>=128 the optimal <code>LEAF_SIZE</code> was found out to be <code>64</code> i.e. once we encounter an array of size less than or equal to 64x64 we shift to <code>O(n^3)</code> solution of Matrix Multiplication.</p>
+<p>On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and <code>N_epoch</code>= 10, <code>SIZE_Lower</code>=16 <code>SIZE_Upper</code>=128 the optimal <code>LEAF_SIZE</code> was found out to be <code>64</code> i.e. once we encounter an array of size less than or equal to 64x64 we shift to <code>O(n^3)</code> solution of Matrix Multiplication. A plot of execution time as a function of <code>LEAF_SIZE</code> on my computer is shown below.</p>
 <div class="image">
 <img src="docs/Time(Sec)_vs_Leaf_Size_plot.png" alt="Time_vs_leaf_size"/>
 </div>
@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jan 30 2021 13:27:43 for Matrix Library by
+    <li class="footer">Generated on Sat Jan 30 2021 13:30:26 for Matrix Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
