@@ -282,6 +282,9 @@ namespace MATOPS
 		template<typename Data1>
 		class BigMatrix
 		{
+
+			int LEAF_SIZE;
+
 			/**
 			 * \privatesection
 			 */
@@ -360,7 +363,7 @@ namespace MATOPS
 				// Once array size of 64x64 in reached we switch to the O(n^3) Matrix Multiplication solution, since after this stage the recursion calls
 				// become a burden to the whole algorithm and we end up getting high execution time. This value of "64" is architecture dependent and will
 				// vary from machine to machine.
-				if(n==64)
+				if(n<=LEAF_SIZE)
 				{
 					Data1** C=Init_matrix(n);
 					for(int i=0;i<n;i++)
@@ -554,9 +557,18 @@ namespace MATOPS
 			}
 		}
 
-		// Matrix Multiplication from CSV files
-//		template<typename Data>
+		/**
+		 * @brief This Function sets the LEAF_SIZE i.e. the array size when we shift from Stressan's Algo to normal O(n^3) solution. The leaf size is used by
+		 * the StrassenMultiply recursive function to manipulate the recursion base condition. Once we reach a square matrix array  of size LEAF_SIZE x LEAF_SIZE
+		 * we perform the multiplication using the naive O(n^3) time complexity solution. The value of LEAF_SIZE varies from machine to machine, hence we need
+		 * to experimentally find out this value for each machine and configure the matrix.h library accordingly.
+		 */
+		void set_LEAF_SIZE(int leaf_size)
+		{
+			LEAF_SIZE=leaf_size;
+		}
 
+		// Matrix Multiplication from CSV files
 		/**
 		 * @brief This is the BigMatrix multiplication Function. To multiply two matrices A and B stored in A.csv and B.csv respectively and store the result in C.csv file.
 		 *
