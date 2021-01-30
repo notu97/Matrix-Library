@@ -560,8 +560,8 @@ namespace MATOPS
 		/**
 		 * @brief This Function sets the LEAF_SIZE i.e. the array size when we shift from Stressan's Algo to normal O(n^3) solution. The leaf size is used by
 		 * the StrassenMultiply recursive function to manipulate the recursion base condition. Once we reach a square matrix array  of size LEAF_SIZE x LEAF_SIZE
-		 * we perform the multiplication using the naive O(n^3) time complexity solution. The value of LEAF_SIZE varies from machine to machine, hence we need
-		 * to experimentally find out this value for each machine and configure the matrix.h library accordingly.
+		 * or lesser, we perform the multiplication using the naive O(n^3) time complexity solution. The value of LEAF_SIZE varies from machine to machine, hence
+		 * we need to experimentally find out this value for each machine and configure the matrix.h library accordingly.
 		 */
 		void set_LEAF_SIZE(int leaf_size)
 		{
