@@ -1,7 +1,7 @@
 var searchData=
 [
   ['matrix_2dlibrary',['Matrix-Library',['../index.html',1,'']]],
-  ['main',['main',['../d0/dd2/configure__lib_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;configure_lib.cpp'],['../d4/d31/example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;example.cpp']]],
+  ['main',['main',['../d0/dd2/configure__lib_8cpp_a3c04138a5bfe5d72780bb7e82a18e627.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;configure_lib.cpp'],['../d4/d31/example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;example.cpp']]],
   ['mat_5fprint',['Mat_print',['../d1/d6c/classMATOPS_1_1BigMatrix_a2b3003374e008ff98f763c29aa4e3c07.html#a2b3003374e008ff98f763c29aa4e3c07',1,'MATOPS::BigMatrix']]],
   ['matmul',['matmul',['../d1/d6c/classMATOPS_1_1BigMatrix_ac793236874a8ccfd66e21006011b9cff.html#ac793236874a8ccfd66e21006011b9cff',1,'MATOPS::BigMatrix']]],
   ['matops',['MATOPS',['../de/dba/namespaceMATOPS.html',1,'']]],
