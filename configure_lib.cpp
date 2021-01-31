@@ -48,7 +48,7 @@ int main(int argc, char** argv){
     int final_leaf_size=0;
     int l_size=8;
         // While loop to keep checking and tracking the best LEAF SIZE for the Library. Once we find the LEAF_SIZE that gives 
-        //the best/ lowest execution time we break out of the while loop and store the LEAF_SIZE value in a configure.txt file.
+        // has the best/ lowest execution time we break out of the while loop and store the LEAF_SIZE value in a configure.txt file.
         while(1) 
         {   
             cout<<"Testing Library with LEAF_SIZE: "<<l_size<<'\n';
