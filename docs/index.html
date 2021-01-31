@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>Once configuration is complete, just put the <a href="https://github.com/notu97/Matrix-Library/blob/main/matrix.h">matrix.h</a> header file in the C++ working directory and include it in the main cpp code using <code>#include"matirx.h"</code>. Also please make sure to keep the configure.txt generated during the configuration step, in the same directory as "matrix.h" i.e. the C++ working directory.</p>
 <p>On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and <code>N_epoch</code>= 10, <code>SIZE_Lower</code>=16 <code>SIZE_Upper</code>=128 the optimal <code>LEAF_SIZE</code> was found out to be <code>64</code> i.e. once we encounter an array of size less than or equal to 64x64 we shift to <code>O(n^3)</code> solution of Matrix Multiplication. A plot of execution time as a function of <code>LEAF_SIZE</code> on my computer is shown below.</p>
 <div class="image">
-<img src="Time_vs_Leaf_Size_plot.png" alt="Time_vs_leaf_size"/>
+<img src="images/Time_vs_Leaf_Size_plot.png" alt="Time_vs_leaf_size"/>
 </div>
 <h2>Usage</h2>
 <h3>Matrix Class (for small Matrices)</h3>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jan 31 2021 02:25:14 for Matrix Library by
+    <li class="footer">Generated on Sun Jan 31 2021 12:01:35 for Matrix Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

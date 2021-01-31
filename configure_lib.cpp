@@ -25,7 +25,7 @@ int main(int argc, char** argv){
     cout<<"------------ Program to find out optimal LEAF_SIZE ---------------\n";
 
     std::ofstream file;
-	file.open("configure.txt");
+	file.open("configure.txt"); // Open configure.txt file
 
     int N_epoch=atoi(argv[1]);
     BigMatrix<int> MatObj;
@@ -46,12 +46,12 @@ int main(int argc, char** argv){
     
     double min_time= DBL_MAX;
     int final_leaf_size=0;
-    int l_size;
-    int low_lim= atoi(argv[2]);
-    int upper_lim=atoi(argv[3]);
-
-    for(l_size=low_lim;l_size<=upper_lim;l_size=2*l_size) // changing leaf size value from Lower limit to Upper limit specified in terminal window.
-        {  //cout<<"Testing for: "<<l_size<<'\n';
+    int l_size=8;
+        // While loop to keep checking and tracking the best LEAF SIZE for the Library. Once we find the LEAF_SIZE that gives 
+        //the best/ lowest execution time we break out of the while loop and store the LEAF_SIZE value in a configure.txt file.
+        while(1) 
+        {   
+            cout<<"Testing Library with LEAF_SIZE: "<<l_size<<'\n';
             MatObj.set_LEAF_SIZE(l_size); // set the LEAF_SIZE value in the matrix.h file.
             double temp_time=0;
             for(int n=0;n<N_epoch;n++) // Run the multiplication process for N_epoch of times for a fixed LEAF_SIZE value.
@@ -71,8 +71,14 @@ int main(int argc, char** argv){
                 min_time=temp_time;
                 final_leaf_size=l_size;
             }
+            else
+            {
+                break;
+            }
+            l_size=2*l_size; // Double the leaf_size after every iteration
         }
         // cout<<final_leaf_size;
+        
         file<<final_leaf_size<<'\n';  // Store the Optimal LEAF_SIZE value in a txt file 
         cout<<"configure.txt File Generated \n";
         file.close();

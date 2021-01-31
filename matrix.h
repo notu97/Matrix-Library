@@ -664,7 +664,7 @@ namespace MATOPS
 					#ifndef SET_LEAF_SIZE 
 						set_configerd_Leaf_size(); // Set the optimal LEAF_SIZE by parsing the configuration file genrated by configure_lib.cpp.
 					#endif
-					//std::cout<<"Current LEAF_SIZE value: "<<LEAF_SIZE<<'\n'; // Just a check to see what LEAF_SIZE value is being used
+					// std::cout<<"Current LEAF_SIZE value: "<<LEAF_SIZE<<'\n'; // Just a check to see what LEAF_SIZE value is being used
 					
 					// Parse the CSV files and get the Matrices to be multiplied
 
