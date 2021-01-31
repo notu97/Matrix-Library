@@ -48,16 +48,16 @@ int main() {
 	BigMatrix<float> MatObj; // Define float object for Big Matrix
 	
 	// Multiply two Matrices in .csv format and save the result in Ans.csv file.
-	MatObj.matmul("/home/shiladitya/eclipse-workspace/large_A.csv","/home/shiladitya/eclipse-workspace/large_B.csv","/home/shiladitya/eclipse-workspace/My_op.csv");
+	MatObj.matmul("/path/to/A.csv","/path/to/B.csv","/path/to/Ans.csv");
 
 	// Read Matrix A from A.csv, find its Transpose and save it in A_trans.csv
-	// MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv");
+	MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv");
 
 	// In-place Transpose: Read Matrix A from A.csv, find its Transpose and overwrite A.csv
-	// MatObj.Transpose("/path/to/A.csv");
+	MatObj.Transpose("/path/to/A.csv");
 
 	// print Matrix in file A.csv
-	// MatObj.Mat_print("/path/to/A.csv");
+	MatObj.Mat_print("/path/to/A.csv");
 
 	return 0;
 }
