@@ -7,7 +7,7 @@ Matrix multiplication for small matrices is done using the straight forward solu
 For Large Matrices the input is taken in a Comma Separated Variable (csv) file format, and the output is stored in a csv file. For small matrices the user has to manually enter the values of the matrix either using a initializer_list format or as a 2D vector. 
 
 ## Installation and Configuration
-Just include the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using ```#include"matirx.h"```. Inorder to get the best performance from this library for large Matrix Multiplicaiton, one has to experimentally find out and set the ```LEAF_SIZE``` for the Stressan's Multiplcation function. The ```LEAF_SIZE``` value modifies the Resursion base condition. Once a Matrix of size ```LEAF_SIZE``` x ```LEAF_SIZE``` or lesser is reached we shift to the Native ```O(n^3)``` Matrix Multiplication solution. The Value of ```LEAF_SIZE``` has the following effect:
+Inorder to get the best performance from this library for large Matrix Multiplicaiton, one has to experimentally find out and set the ```LEAF_SIZE``` for the Stressan's Multiplcation function. The ```LEAF_SIZE``` value modifies the Resursion base condition. Once a Matrix of size ```LEAF_SIZE``` x ```LEAF_SIZE``` or lesser is reached we shift to the Native ```O(n^3)``` Matrix Multiplication solution. The Value of ```LEAF_SIZE``` has the following effect:
 * A very high value of ```LEAF_SIZE``` leads to lesser resursion calls but ends up giving more weightage to the ```O(n^3)``` solution. 
 * On the other hand a very low ```LEAF_SIZE``` value leads to higher number of resursion calls and gives lesser weightage to the ```O(n^3)``` solution. 
 
@@ -20,6 +20,8 @@ $ ./configure_lib <N_epoch> <SIZE_Lower> <SIZE_Upper>
 
 ```
 Note: Since I have used the most simplest Stressan's Algorithm implmentation, where by both the input matrices are padded with zeros to make there size equal to the next largest power of 2, the matrix size is always a power of 2. Hence the ```SIZE_Lower``` and ```SIZE_Upper``` values should always be a power of 2.
+
+Once this is done, just put the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in your C++ working directory and include it in your main cpp code using ```#include"matirx.h"```. Also please make sure to keep the configure.txt generated durinfg the configuration step, in the same dorectory as "matrix.h".
 
 On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and  ```N_epoch```= 10, ```SIZE_Lower```=16 ```SIZE_Upper```=128 the optimal ```LEAF_SIZE``` was found out to be ```64``` i.e. once we encounter an array of size less than or equal to 64x64 we shift to ```O(n^3)``` solution of Matrix Multiplication. A plot of execution time as a function of ```LEAF_SIZE``` on my computer is shown below.
 
