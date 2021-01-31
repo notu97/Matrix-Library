@@ -1,0 +1,60 @@
+\hypertarget{example_8cpp}{}\section{example.\+cpp File Reference}
+\label{example_8cpp}\index{example.\+cpp@{example.\+cpp}}
+
+
+A simple example code illustrating how to use the Library.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A simple example code illustrating how to use the Library. 
+
+\begin{DoxyDate}{Date}
+Jan 24, 2021 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Shiladitya Biswas
+\end{DoxyAuthor}
+This is an example code illustrating how to use the \hyperlink{matrix_8h}{matrix.\+h} library. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{example.\+cpp@{example.\+cpp}!main@{main}}
+\index{main@{main}!example.\+cpp@{example.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+33            \{
+34 
+35         \textcolor{comment}{// Define matrices of size 2x4 and 2x2 of type double }
+36         \hyperlink{classMATOPS_1_1Matrix}{Matrix<double,2,2>} A\{\{1,2\},\{3,4\}\};
+37         \hyperlink{classMATOPS_1_1Matrix}{Matrix<double,2,4>} B\{\{1,2,4,5\},\{4,6,7,8\}\};
+38         
+39         \textcolor{comment}{// Print the Matrices A and B followed by Product A*B and transpose of A}
+40         cout<<A<<\textcolor{stringliteral}{"\(\backslash\)n \(\backslash\)n"}<<B<<\textcolor{stringliteral}{"\(\backslash\)n \(\backslash\)n"}<< A*B<<\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n"}<<A.\hyperlink{classMATOPS_1_1Matrix_aa278f18f2e1324c56d965cd5e033b4eb}{transpose}()<<\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n"};
+41 
+42         \hyperlink{classMATOPS_1_1BigMatrix}{BigMatrix<float>} MatObj; \textcolor{comment}{// Define float object for Big Matrix}
+43         
+44         \textcolor{comment}{// Multiply two Matrices in .csv format and save the result in Ans.csv file.}
+45         MatObj.\hyperlink{classMATOPS_1_1BigMatrix_ac793236874a8ccfd66e21006011b9cff}{matmul}(\textcolor{stringliteral}{"/path/to/A.csv"},\textcolor{stringliteral}{"/path/to/B.csv"},\textcolor{stringliteral}{"/path/to/Ans.csv"});
+46 
+47         \textcolor{comment}{// Read Matrix A from A.csv, find its Transpose and save it in A\_trans.csv}
+48         MatObj.\hyperlink{classMATOPS_1_1BigMatrix_a3d3ca40bb701fbc884c6b603dd95e753}{Transpose}(\textcolor{stringliteral}{"/path/to/A.csv"}, \textcolor{stringliteral}{"/path/to/A\_trans.csv"});
+49 
+50         \textcolor{comment}{// In-place Transpose: Read Matrix A from A.csv, find its Transpose and overwrite A.csv}
+51         MatObj.\hyperlink{classMATOPS_1_1BigMatrix_a3d3ca40bb701fbc884c6b603dd95e753}{Transpose}(\textcolor{stringliteral}{"/path/to/A.csv"});
+52 
+53         \textcolor{comment}{// print Matrix in file A.csv}
+54         MatObj.\hyperlink{classMATOPS_1_1BigMatrix_a2b3003374e008ff98f763c29aa4e3c07}{Mat\_print}(\textcolor{stringliteral}{"/path/to/A.csv"});
+55 
+56         \textcolor{keywordflow}{return} 0;
+57 \}
+\end{DoxyCode}

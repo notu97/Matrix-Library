@@ -1,0 +1,393 @@
+\hypertarget{classMATOPS_1_1Matrix}{}\section{M\+A\+T\+O\+PS\+:\+:Matrix$<$ T, m, n $>$ Class Template Reference}
+\label{classMATOPS_1_1Matrix}\index{M\+A\+T\+O\+P\+S\+::\+Matrix$<$ T, m, n $>$@{M\+A\+T\+O\+P\+S\+::\+Matrix$<$ T, m, n $>$}}
+
+
+This class is for matrices of smaller size. The user can define a \hyperlink{classMATOPS_1_1Matrix}{Matrix} A of size m x n of Datatype T as follows\+: M\+A\+T\+O\+P\+S\+::\+Matrix$<$\+T,m,n$>$ A.  
+
+
+
+
+{\ttfamily \#include $<$matrix.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classMATOPS_1_1Matrix_a9e67c9220ad942e35655ff62ad268365}{$\sim$\+Matrix} ()
+\item 
+size\+\_\+t \hyperlink{classMATOPS_1_1Matrix_a4fde0b19d8cd6ca18c24d836355a2e5a}{cols} ()
+\item 
+size\+\_\+t \hyperlink{classMATOPS_1_1Matrix_a3eb38202054437704ba4ceba78959d5b}{rows} ()
+\item 
+\hyperlink{classMATOPS_1_1Matrix_ab714719c18d79c8d0480d0665ff56609}{Matrix} ()
+\begin{DoxyCompactList}\small\item\em Default constructor to initialize the matrix with zeros. \end{DoxyCompactList}\item 
+\hyperlink{classMATOPS_1_1Matrix_ab665ea80cebcf2656c51dac5a86efd7b}{Matrix} (std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ T $>$$>$ my\+\_\+list)
+\begin{DoxyCompactList}\small\item\em Overloaded constructor the initialize the \hyperlink{classMATOPS_1_1Matrix}{Matrix} from a 2D Initializer list. \end{DoxyCompactList}\item 
+\hyperlink{classMATOPS_1_1Matrix_a6daf4c8232f2e9b0b1297a6e08eb4f1c}{Matrix} (std\+::vector$<$ std\+::vector$<$ T $>$$>$ \&my\+\_\+vec)
+\begin{DoxyCompactList}\small\item\em Overloaded constructor the initialize the \hyperlink{classMATOPS_1_1Matrix}{Matrix} from a 2D Vector. \end{DoxyCompactList}\item 
+\hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$ T, n, m $>$ \hyperlink{classMATOPS_1_1Matrix_aa278f18f2e1324c56d965cd5e033b4eb}{transpose} ()
+\begin{DoxyCompactList}\small\item\em Take an object of type \hyperlink{classMATOPS_1_1Matrix}{Matrix} and returns its Transpose. \end{DoxyCompactList}\item 
+\hyperlink{classMATOPS_1_1Matrix}{Matrix} \& \hyperlink{classMATOPS_1_1Matrix_a4512ee518878124f54e3c596d2847d86}{operator=} (const \hyperlink{classMATOPS_1_1Matrix}{Matrix} \&rhs)
+\begin{DoxyCompactList}\small\item\em Equal to operator overloaded to copy one matrix into another. \end{DoxyCompactList}\item 
+const T \& \hyperlink{classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562}{Element\+At} (size\+\_\+t i, size\+\_\+t j) const
+\begin{DoxyCompactList}\small\item\em Function to read value from the (i,j)th position of the \hyperlink{classMATOPS_1_1Matrix}{Matrix}. \end{DoxyCompactList}\item 
+T \& \hyperlink{classMATOPS_1_1Matrix_a28edfa65a7b0f5cbeb96d91bfaee4d6a}{Element\+At} (size\+\_\+t i, size\+\_\+t j)
+\begin{DoxyCompactList}\small\item\em Function to write value to the (i,j)th position of the \hyperlink{classMATOPS_1_1Matrix}{Matrix}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{classMATOPS_1_1Matrix_af2a995c9d251f109d54040e2732a93f0}{array} \mbox{[}m\mbox{]}\mbox{[}n\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$size\+\_\+t k, size\+\_\+t p$>$ }\\\hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$ T, m, k $>$ \hyperlink{classMATOPS_1_1Matrix_a71a095944f9f8db8ac68b41e3a409114}{operator$\ast$} (const \hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$ T, m, n $>$ \&A, const \hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$ T, p, k $>$ \&B)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classMATOPS_1_1Matrix}{Matrix} multiplication using overloaded $\ast$ operator. Takes 2 Matrices of size m x n and p x k. Checks if their inner dimensions match (i.\+e. n=p). If n=p then A and B is multiplied and a resultant \hyperlink{classMATOPS_1_1Matrix}{Matrix} of size m x k is returned. \end{DoxyCompactList}\item 
+std\+::ostream \& \hyperlink{classMATOPS_1_1Matrix_ae239bcfdd34ba0b3693e1c11063afc6a}{operator$<$$<$} (std\+::ostream \&os, const \hyperlink{classMATOPS_1_1Matrix}{Matrix} \&rhs)
+\begin{DoxyCompactList}\small\item\em Operator overloaded to output/print an object of type \hyperlink{classMATOPS_1_1Matrix}{Matrix}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$\newline
+class M\+A\+T\+O\+P\+S\+::\+Matrix$<$ T, m, n $>$}
+
+This class is for matrices of smaller size. The user can define a \hyperlink{classMATOPS_1_1Matrix}{Matrix} A of size m x n of Datatype T as follows\+: M\+A\+T\+O\+P\+S\+::\+Matrix$<$\+T,m,n$>$ A. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & = Data\+Type of the \hyperlink{classMATOPS_1_1Matrix}{Matrix}. Eg. int, float, double etc. \\
+\hline
+{\em m} & = No. of Rows of the \hyperlink{classMATOPS_1_1Matrix}{Matrix} \\
+\hline
+{\em n} & = No. of Cols of the \hyperlink{classMATOPS_1_1Matrix}{Matrix} \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_a9e67c9220ad942e35655ff62ad268365}\label{classMATOPS_1_1Matrix_a9e67c9220ad942e35655ff62ad268365}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!````~Matrix@{$\sim$\+Matrix}}
+\index{````~Matrix@{$\sim$\+Matrix}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{$\sim$\+Matrix()}{~Matrix()}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+virtual \hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::$\sim$\hyperlink{classMATOPS_1_1Matrix}{Matrix} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Destructor 
+\begin{DoxyCode}
+48 \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_ab714719c18d79c8d0480d0665ff56609}\label{classMATOPS_1_1Matrix_ab714719c18d79c8d0480d0665ff56609}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+\hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::\hyperlink{classMATOPS_1_1Matrix}{Matrix} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor to initialize the matrix with zeros. 
+
+
+\begin{DoxyCode}
+74                         \{
+75                                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i=0;i<m;i++)
+76                                 \{
+77                                         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} j=0;j<n;j++)
+78                                         \{
+79                                                 \hyperlink{classMATOPS_1_1Matrix_af2a995c9d251f109d54040e2732a93f0}{array}[i][j]=0;
+80                                         \}
+81                                 \}
+82                         \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_ab665ea80cebcf2656c51dac5a86efd7b}\label{classMATOPS_1_1Matrix_ab665ea80cebcf2656c51dac5a86efd7b}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+\hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::\hyperlink{classMATOPS_1_1Matrix}{Matrix} (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ T $>$$>$}]{my\+\_\+list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded constructor the initialize the \hyperlink{classMATOPS_1_1Matrix}{Matrix} from a 2D Initializer list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+list} & = A 2D initializer\+\_\+list of the the m x n \hyperlink{classMATOPS_1_1Matrix}{Matrix}. Eg\+: \{\{1,2\},\{3,4\}\} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+89                                                                                    :
+      \hyperlink{classMATOPS_1_1Matrix_ab714719c18d79c8d0480d0665ff56609}{Matrix}()
+90                                 \{
+91                                         \textcolor{keywordtype}{int} row\_n=0;
+92                                         \textcolor{keywordflow}{for}(std::initializer\_list<T> i:my\_list)
+93                                         \{   \textcolor{keywordtype}{int} col\_n=0;
+94                                                 \textcolor{keywordflow}{for}(T j : i)
+95                                                 \{
+96                                                         \hyperlink{classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562}{ElementAt}(row\_n,col\_n)=j;
+97                                                         col\_n++;
+98                                                         \textcolor{comment}{// cout<<j<<" ";}
+99                                                 \}
+100                                                 row\_n++;
+101                                                 \textcolor{comment}{//cout<<'\(\backslash\)n';}
+102                                         \}
+103                                 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_a6daf4c8232f2e9b0b1297a6e08eb4f1c}\label{classMATOPS_1_1Matrix_a6daf4c8232f2e9b0b1297a6e08eb4f1c}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+\hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::\hyperlink{classMATOPS_1_1Matrix}{Matrix} (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ T $>$$>$ \&}]{my\+\_\+vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded constructor the initialize the \hyperlink{classMATOPS_1_1Matrix}{Matrix} from a 2D Vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+vec} & = A 2D initializer\+\_\+list of the the m x n \hyperlink{classMATOPS_1_1Matrix}{Matrix}. Eg\+: \{\{1,2\},\{3,4\}\} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+111                                                                 :\hyperlink{classMATOPS_1_1Matrix_ab714719c18d79c8d0480d0665ff56609}{Matrix}()
+112                         \{
+113 
+114                                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i=0; i<my\_vec.size(); ++i)
+115                                         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} j=0; j<my\_vec[0].size(); ++j)
+116                                                 \hyperlink{classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562}{ElementAt}(i,j) = my\_vec[i][j];
+117                         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_a4fde0b19d8cd6ca18c24d836355a2e5a}\label{classMATOPS_1_1Matrix_a4fde0b19d8cd6ca18c24d836355a2e5a}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!cols@{cols}}
+\index{cols@{cols}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{cols()}{cols()}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+size\+\_\+t \hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::cols (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Returns the number of columns in the \hyperlink{classMATOPS_1_1Matrix}{Matrix} 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+55                         \{
+56                                 \textcolor{keywordflow}{return} n;
+57                         \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562}\label{classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!Element\+At@{Element\+At}}
+\index{Element\+At@{Element\+At}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{Element\+At()}{ElementAt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+const T\& \hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::Element\+At (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to read value from the (i,j)th position of the \hyperlink{classMATOPS_1_1Matrix}{Matrix}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & = row index \\
+\hline
+{\em j} & = column index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+196                                         \{ \textcolor{keywordflow}{return} \hyperlink{classMATOPS_1_1Matrix_af2a995c9d251f109d54040e2732a93f0}{array}[i][j]; \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_a28edfa65a7b0f5cbeb96d91bfaee4d6a}\label{classMATOPS_1_1Matrix_a28edfa65a7b0f5cbeb96d91bfaee4d6a}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!Element\+At@{Element\+At}}
+\index{Element\+At@{Element\+At}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{Element\+At()}{ElementAt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+T\& \hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::Element\+At (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to write value to the (i,j)th position of the \hyperlink{classMATOPS_1_1Matrix}{Matrix}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+{\em j} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+205                                 \{ \textcolor{keywordflow}{return} \hyperlink{classMATOPS_1_1Matrix_af2a995c9d251f109d54040e2732a93f0}{array}[i][j]; \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_a4512ee518878124f54e3c596d2847d86}\label{classMATOPS_1_1Matrix_a4512ee518878124f54e3c596d2847d86}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+\hyperlink{classMATOPS_1_1Matrix}{Matrix}\& \hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$ T, m, n $>$ \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Equal to operator overloaded to copy one matrix into another. 
+
+
+\begin{DoxyCode}
+180                                                              \{
+181                                 \textcolor{keywordflow}{if}( \textcolor{keyword}{this} != &rhs )
+182                                         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i=0; i<m; ++i)
+183                                         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} j=0; j<n; ++j)
+184                                                 \hyperlink{classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562}{ElementAt}(i,j) = rhs.ElementAt(i,j);
+185                                 \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+186                         \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_a3eb38202054437704ba4ceba78959d5b}\label{classMATOPS_1_1Matrix_a3eb38202054437704ba4ceba78959d5b}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!rows@{rows}}
+\index{rows@{rows}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{rows()}{rows()}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+size\+\_\+t \hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Returns the number of Rows in the \hyperlink{classMATOPS_1_1Matrix}{Matrix}. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+64                         \{
+65                                 \textcolor{keywordflow}{return} m;
+66                         \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_aa278f18f2e1324c56d965cd5e033b4eb}\label{classMATOPS_1_1Matrix_aa278f18f2e1324c56d965cd5e033b4eb}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!transpose@{transpose}}
+\index{transpose@{transpose}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{transpose()}{transpose()}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+\hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$T,n,m$>$ \hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::transpose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Take an object of type \hyperlink{classMATOPS_1_1Matrix}{Matrix} and returns its Transpose. 
+
+\begin{DoxyReturn}{Returns}
+Given input \hyperlink{classMATOPS_1_1Matrix}{Matrix} A, the Transpose of A is returned. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+126                         \{
+127                                 Matrix<T,n,m> result;
+128                                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i=0;i<m;++i)
+129                                 \{
+130                                         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} j=0;j<n;++j)
+131                                         \{
+132                                                 result.ElementAt(j,i)=\hyperlink{classMATOPS_1_1Matrix_a9eabd6b452bd01040c9ecaadc2ad6562}{ElementAt}(i,j);
+133                                         \}
+134 
+135                                 \}
+136                                 \textcolor{keywordflow}{return} result;
+137 
+138                         \}
+\end{DoxyCode}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_a71a095944f9f8db8ac68b41e3a409114}\label{classMATOPS_1_1Matrix_a71a095944f9f8db8ac68b41e3a409114}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{operator$\ast$}{operator*}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+template$<$size\+\_\+t k, size\+\_\+t p$>$ \\
+\hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$T,m,k$>$ operator$\ast$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$ T, m, n $>$ \&}]{A,  }\item[{const \hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$ T, p, k $>$ \&}]{B }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\hyperlink{classMATOPS_1_1Matrix}{Matrix} multiplication using overloaded $\ast$ operator. Takes 2 Matrices of size m x n and p x k. Checks if their inner dimensions match (i.\+e. n=p). If n=p then A and B is multiplied and a resultant \hyperlink{classMATOPS_1_1Matrix}{Matrix} of size m x k is returned. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em k} & = No of cols of \hyperlink{classMATOPS_1_1Matrix}{Matrix} B \\
+\hline
+{\em p} & = No of rows of \hyperlink{classMATOPS_1_1Matrix}{Matrix} B \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em A} & = \hyperlink{classMATOPS_1_1Matrix}{Matrix} A \\
+\hline
+{\em B} & = \hyperlink{classMATOPS_1_1Matrix}{Matrix} B \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultant \hyperlink{classMATOPS_1_1Matrix}{Matrix} Product of A and B i.\+e. A$\ast$B 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+153                         \{
+154                                 \textcolor{keywordflow}{if}(n==p) \textcolor{comment}{// Check if inner Dimensions Match, else throw error.}
+155                                 \{
+156                                         Matrix<T,m,k> result;
+157 
+158                                         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i\_m = 0; i\_m < m; ++i\_m) \{
+159                                                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i\_k = 0; i\_k < k; ++i\_k) \{
+160 
+161                                                         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i\_n = 0; i\_n < n; ++i\_n) \{
+162                                                         result.ElementAt(i\_m,i\_k) += A.ElementAt(i\_m,i\_n) *
+       B.ElementAt(i\_n,i\_k);
+163                                                         \}
+164                                                 \}
+165                                         \}
+166                                         \textcolor{keywordflow}{return} result;
+167                                 \}
+168                                 \textcolor{keywordflow}{else}
+169                                 \{
+170                                         std::cerr<<\textcolor{stringliteral}{"Matrix Inner Dimensions don't match !!! \(\backslash\)n"};
+171                                         exit(0);
+172                                 \}
+173 
+174                         \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_ae239bcfdd34ba0b3693e1c11063afc6a}\label{classMATOPS_1_1Matrix_ae239bcfdd34ba0b3693e1c11063afc6a}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \hyperlink{classMATOPS_1_1Matrix}{Matrix}$<$ T, m, n $>$ \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Operator overloaded to output/print an object of type \hyperlink{classMATOPS_1_1Matrix}{Matrix}. 
+
+
+\begin{DoxyCode}
+213                         \{
+214                                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i=0; i<m; ++i)
+215                                         \{
+216                                                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} j=0; j<n; ++j)
+217                                                         \{os<<rhs.ElementAt(i,j)<<\textcolor{stringliteral}{" "};\}
+218                                                 os<<\textcolor{charliteral}{'\(\backslash\)n'};
+219                                         \}
+220                                 \textcolor{keywordflow}{return} os;
+221                         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classMATOPS_1_1Matrix_af2a995c9d251f109d54040e2732a93f0}\label{classMATOPS_1_1Matrix_af2a995c9d251f109d54040e2732a93f0}} 
+\index{M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}!array@{array}}
+\index{array@{array}!M\+A\+T\+O\+P\+S\+::\+Matrix@{M\+A\+T\+O\+P\+S\+::\+Matrix}}
+\subsubsection{\texorpdfstring{array}{array}}
+{\footnotesize\ttfamily template$<$typename T, size\+\_\+t m, size\+\_\+t n$>$ \\
+T \hyperlink{classMATOPS_1_1Matrix}{M\+A\+T\+O\+P\+S\+::\+Matrix}$<$ T, m, n $>$\+::array\mbox{[}m\mbox{]}\mbox{[}n\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{matrix_8h}{matrix.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,114 @@
+\hypertarget{namespaceMATOPS}{}\section{M\+A\+T\+O\+PS Namespace Reference}
+\label{namespaceMATOPS}\index{M\+A\+T\+O\+PS@{M\+A\+T\+O\+PS}}
+
+
+The main \hyperlink{matrix_8h}{matrix.\+h} namespace.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classMATOPS_1_1BigMatrix}{Big\+Matrix}
+\begin{DoxyCompactList}\small\item\em This is the Class for handling Large Matrices. It takes in large Matrices stored as comma-\/separated values (C\+SV) files and perform both Multiplication (Stressan\textquotesingle{}s Algorithm) and transpose. \end{DoxyCompactList}\item 
+class \hyperlink{classMATOPS_1_1Matrix}{Matrix}
+\begin{DoxyCompactList}\small\item\em This class is for matrices of smaller size. The user can define a \hyperlink{classMATOPS_1_1Matrix}{Matrix} A of size m x n of Datatype T as follows\+: M\+A\+T\+O\+P\+S\+::\+Matrix$<$\+T,m,n$>$ A. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Data2 $>$ }\\void \hyperlink{namespaceMATOPS_a2050c01cf601a211d3abc45515b8749d}{store\+\_\+csv} (Data2 $\ast$$\ast$C, int m\+\_\+1, int n\+\_\+2, std\+::string path)
+\begin{DoxyCompactList}\small\item\em Function template to Store csv file at a given destination file. This function is internally called by matmul and Transpose function (with Data2\+:= int, float etc) to store the Resultant \hyperlink{classMATOPS_1_1BigMatrix}{Big\+Matrix} from the memory to a C\+SV file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename My\+\_\+data $>$ }\\My\+\_\+data \hyperlink{namespaceMATOPS_a058c07f65db98cd52617d3d5c4de3b42}{convert\+\_\+to} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Function template to convert variable type from string to int,float, double or any other Datatype. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main \hyperlink{matrix_8h}{matrix.\+h} namespace. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceMATOPS_a058c07f65db98cd52617d3d5c4de3b42}\label{namespaceMATOPS_a058c07f65db98cd52617d3d5c4de3b42}} 
+\index{M\+A\+T\+O\+PS@{M\+A\+T\+O\+PS}!convert\+\_\+to@{convert\+\_\+to}}
+\index{convert\+\_\+to@{convert\+\_\+to}!M\+A\+T\+O\+PS@{M\+A\+T\+O\+PS}}
+\subsubsection{\texorpdfstring{convert\+\_\+to()}{convert\_to()}}
+{\footnotesize\ttfamily template$<$typename My\+\_\+data $>$ \\
+My\+\_\+data M\+A\+T\+O\+P\+S\+::convert\+\_\+to (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Function template to convert variable type from string to int,float, double or any other Datatype. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em My\+\_\+data} & = Datatype into which we want to convert the string input from C\+SV files. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em str} & = String input from the Csv file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns Converted number from string to My\+\_\+data. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+270                         \{
+271                                 std::istringstream ss(str);
+272 
+273                                 My\_data num;
+274 
+275                                 ss>>num;
+276                                 \textcolor{keywordflow}{return} num;
+277                         \}
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceMATOPS_a2050c01cf601a211d3abc45515b8749d}\label{namespaceMATOPS_a2050c01cf601a211d3abc45515b8749d}} 
+\index{M\+A\+T\+O\+PS@{M\+A\+T\+O\+PS}!store\+\_\+csv@{store\+\_\+csv}}
+\index{store\+\_\+csv@{store\+\_\+csv}!M\+A\+T\+O\+PS@{M\+A\+T\+O\+PS}}
+\subsubsection{\texorpdfstring{store\+\_\+csv()}{store\_csv()}}
+{\footnotesize\ttfamily template$<$typename Data2 $>$ \\
+void M\+A\+T\+O\+P\+S\+::store\+\_\+csv (\begin{DoxyParamCaption}\item[{Data2 $\ast$$\ast$}]{C,  }\item[{int}]{m\+\_\+1,  }\item[{int}]{n\+\_\+2,  }\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Function template to Store csv file at a given destination file. This function is internally called by matmul and Transpose function (with Data2\+:= int, float etc) to store the Resultant \hyperlink{classMATOPS_1_1BigMatrix}{Big\+Matrix} from the memory to a C\+SV file. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Data2} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em C} & = A Pointer pointing to the 2D \hyperlink{classMATOPS_1_1BigMatrix}{Big\+Matrix} in the memory \\
+\hline
+{\em m\+\_\+1} & = No. of Rows of the Resultant \hyperlink{classMATOPS_1_1BigMatrix}{Big\+Matrix} \\
+\hline
+{\em n\+\_\+2} & = No. of Columns of the Resultant \hyperlink{classMATOPS_1_1BigMatrix}{Big\+Matrix} \\
+\hline
+{\em path} & = \char`\"{}path to destination csv file\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+239                                         \{
+240                                                 std::ofstream file;
+241                                                 file.open(path);
+242 
+243                                                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<m\_1;i++)
+244                                                 \{
+245                                                         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<n\_2;j++)
+246                                                         \{
+247                                                                 file<<C[i][j];
+248                                                                 \textcolor{keywordflow}{if}(j<(n\_2)-1)
+249                                                                 \{
+250                                                                         file<<\textcolor{stringliteral}{","};
+251                                                                 \}
+252                                                                 \textcolor{keywordflow}{else}
+253                                                                 \{
+254                                                                         file<<\textcolor{stringliteral}{"\(\backslash\)n"};
+255                                                                 \}
+256                                                         \}
+257                                                 \}
+258                                                 file.close();
+259 
+260                                         \}
+\end{DoxyCode}
