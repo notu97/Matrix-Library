@@ -46,7 +46,8 @@ std::vector<std::vector<float>> vect {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
 MATOPS::Matrix<float,3,4> A(vect);
 
 ```
-Waring: The size of small Matrices should not exceed 200 i.e. at max we have a matrix of 200 x 200, else the program stack gets filled with data and there is no space left to do other operations.
+Waring: The size of small Matrices should not exceed 200 i.e. at max we have a matrix of size 200 x 200, else the program stack gets filled with data and there is no space left to do other operations.
+
 #### Transposing a small Matrix
 ``` C++
 MATOPS::Matrix<float,3,4> A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};
