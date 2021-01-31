@@ -97,13 +97,13 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="fragment"><div class="line">$ git clone https://github.com/notu97/Matrix-Library.git matrix_WS</div><div class="line">$ cd matrix_WS/</div><div class="line">$ g++ configure_lib.cpp -o configure_lib -DSET_LEAF_SIZE</div><div class="line">$ ./configure_lib &lt;N_epoch&gt;</div></div><!-- fragment --><p>Once configuration is complete, just put the <code><a class="el" href="dd/df4/matrix_8h.html" title="The main Matrix library header file. A simple Matrix operation library, to Multiply 2 Matrices and fi...">matrix.h</a></code> header file in the C++ working directory and include it in the main cpp code using <code>#include"matirx.h"</code>. Also please make sure to keep the <code>configure.txt</code> generated during the configuration step, in the same directory as "matrix.h" i.e. the C++ working directory. An <code><a class="el" href="d4/d31/example_8cpp.html" title="A simple example code illustrating how to use the Library. ">example.cpp</a></code> template file is provided to get started.</p>
 <p>On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and <code>N_epoch</code>= 10 the optimal <code>LEAF_SIZE</code> was found out to be <code>64</code> i.e. once we encounter an array of size less than or equal to 64x64 we shift to <code>O(n^3)</code> solution for Matrix Multiplication. A plot of execution time as a function of <code>LEAF_SIZE</code> for my computer is shown below.</p>
 <div class="image">
-<img src="Time_vs_Leaf_Size_plot.png" alt="Time_vs_leaf_size"/>
+<img src="images/Time_vs_Leaf_Size_plot.png" alt="Time_vs_leaf_size"/>
 </div>
 <h2>Usage</h2>
 <h3>Matrix Class (for small Matrices)</h3>
 <h4>Defining a small Matrix of size 3x4 of type float</h4>
 <p>Using initilizer list </p><div class="fragment"><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div></div><!-- fragment --><p>Using 2D std::vector </p><div class="fragment"><div class="line">std::vector&lt;std::vector&lt;float&gt;&gt; vect {{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A(vect);</div></div><!-- fragment --><p> Waring: The size of small Matrices should not exceed 200 i.e. at max we have a matrix of size 200 x 200, else the program stack gets filled with data and there is no space left to do other operations.</p>
-<p>#### Transposing a small Matrix </p><div class="fragment"><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div><div class="line">std::cout&lt;&lt; A.transpose();</div></div><!-- fragment --><p>#### Multiplying 2 small Matrices </p><div class="fragment"><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div><div class="line">MATOPS::Matrix&lt;float,4,2&gt; B{{1,2},{5,6},{9,10},{3,4}};</div><div class="line">MATOPS::Matrix&lt;float,3,2&gt; C=A*B;</div><div class="line"></div><div class="line">std::cout&lt;&lt; C;</div><div class="line">//OR</div><div class="line">std::cout&lt;&lt;A*B;</div></div><!-- fragment --><h3>BigMatrix Class (for large Matrices)</h3>
+<p># Transposing a small Matrix </p><div class="fragment"><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div><div class="line">std::cout&lt;&lt; A.transpose();</div></div><!-- fragment --><p># Multiplying 2 small Matrices </p><div class="fragment"><div class="line">MATOPS::Matrix&lt;float,3,4&gt; A{{1,2,3,4},{5,6,7,8},{9,10,11,12}};</div><div class="line">MATOPS::Matrix&lt;float,4,2&gt; B{{1,2},{5,6},{9,10},{3,4}};</div><div class="line">MATOPS::Matrix&lt;float,3,2&gt; C=A*B;</div><div class="line"></div><div class="line">std::cout&lt;&lt; C;</div><div class="line">//OR</div><div class="line">std::cout&lt;&lt;A*B;</div></div><!-- fragment --><h3>BigMatrix Class (for large Matrices)</h3>
 <p>Since big Matrices are already defined in a csv file, we can just parse the files and find out the dimensions of the matrix. The only information to be given to the header file is the Datatype of the Matrix.</p>
 <h4>BigMatrix Multiply (Strassen's Algorithm)</h4>
 <p>Let there be 2 matrices A and B stored in 2 csv files namely A.csv and B.csv repectively. We wish to multiply both of them and store the result in a third file named Ans.csv . The code for this process is shown below.</p>
@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jan 31 2021 13:58:58 for Matrix Library by
+    <li class="footer">Generated on Sun Jan 31 2021 14:00:28 for Matrix Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
