@@ -29,19 +29,7 @@ int main(int argc, char** argv){
 
     int N_epoch=atoi(argv[1]);
     BigMatrix<int> MatObj;
-    
-    string path_to_A, path_to_B,path_to_C;
-
-    // Get the path to the Big Matrices (Matrix csv files)
-    cout<<"Enter path to Matrix A: ";
-    getline(cin,path_to_A);
-
-    cout<<"Enter path to Matrix B: ";
-    getline(cin,path_to_B);
-
-    cout<<"Enter path to store Result of A*B: ";
-    getline(cin,path_to_C);
-	
+    	
     cout<<"Configuring ......\n";
     
     double min_time= DBL_MAX;
@@ -58,7 +46,7 @@ int main(int argc, char** argv){
             {   
                 // Determine the Time taken to do the multiplication operation
                 auto start = std::chrono::steady_clock::now();
-                MatObj.matmul(path_to_A,path_to_B,path_to_C);
+                MatObj.matmul("Configure_Data/large_A.csv","Configure_Data/large_B.csv","Configure_Data/Ans.csv");
                 auto end = std::chrono::steady_clock::now();
                 std::chrono::duration<double> elapsed_seconds = end-start;
                 temp_time+=elapsed_seconds.count();
