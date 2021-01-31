@@ -15,13 +15,15 @@ Both the above scenarios adversely effects the execution time of Matrix Multipli
 
 ``` sh
 
+$ git clone https://github.com/notu97/Matrix-Library.git matrix_WS
+$ cd matrix_WS/
 $ g++ configure_lib.cpp -o configure_lib -DSET_LEAF_SIZE
 $ ./configure_lib <N_epoch>
 
 ```
 <!-- Note: Since I have used the most simplest Stressan's Algorithm implmentation, where by both the input matrices are padded with zeros to make there size equal to the next largest power of 2, the matrix size is always a power of 2. Hence the ```SIZE_Lower``` and ```SIZE_Upper``` values should always be a power of 2. -->
 
-Once configuration is complete, just put the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in the C++ working directory and include it in the main cpp code using ```#include"matirx.h"```. Also please make sure to keep the configure.txt generated during the configuration step, in the same directory as "matrix.h" i.e. the C++ working directory.
+Once configuration is complete, just put the [matrix.h](https://github.com/notu97/Matrix-Library/blob/main/matrix.h) header file in the C++ working directory and include it in the main cpp code using ```#include"matirx.h"```. Also please make sure to keep the configure.txt generated during the configuration step, in the same directory as "matrix.h" i.e. the C++ working directory. An ```example.cpp``` template file is provided to get started.
 
 On my computer, for two Matrices A.csv and B.csv of size 2000x2000 of integer type and  ```N_epoch```= 10 the optimal ```LEAF_SIZE``` was found out to be ```64``` i.e. once we encounter an array of size less than or equal to 64x64 we shift to ```O(n^3)``` solution of Matrix Multiplication. A plot of execution time as a function of ```LEAF_SIZE``` on my computer is shown below.
 
