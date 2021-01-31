@@ -31,16 +31,10 @@ using namespace MATOPS; //namespace for matrix.h
 
 
 int main() {
-	
-	// int optimal_Leaf_size=0;
-	// #ifdef MY_FLAG
-	// 	cout<<"value is : "<<MY_FLAG<<'\n';
-	// 	optimal_Leaf_size=MY_FLAG;
-	// #endif
 
-	// Define matrices of size 2x4 and 2x2 of type double
-	Matrix<double,2,4> B{{1,2,4,5},{4,6,7,8}}; 
-	Matrix<double,2,2> A{{1,2},{2,2}};
+	// Define matrices of size 2x4 and 2x2 of type double 
+	Matrix<double,2,2> A{{1,2},{3,4}};
+	Matrix<double,2,4> B{{1,2,4,5},{4,6,7,8}};
 	
 	// Print the Matrices A and B followed by Product A*B and transpose of A
 	cout<<A<<"\n \n"<<B<<"\n \n"<< A*B<<"\n\n"<<A.transpose()<<"\n\n";
