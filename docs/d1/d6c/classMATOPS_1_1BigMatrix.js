@@ -7,6 +7,7 @@ var classMATOPS_1_1BigMatrix =
     [ "matmul", "d1/d6c/classMATOPS_1_1BigMatrix_ac793236874a8ccfd66e21006011b9cff.html#ac793236874a8ccfd66e21006011b9cff", null ],
     [ "print_Mat", "d1/d6c/classMATOPS_1_1BigMatrix_af5223558c09e6c3c2fd3bcc5ccd08382.html#af5223558c09e6c3c2fd3bcc5ccd08382", null ],
     [ "set_configerd_Leaf_size", "d1/d6c/classMATOPS_1_1BigMatrix_a89f5328b2686ef2a0dfaa9c2bd852d37.html#a89f5328b2686ef2a0dfaa9c2bd852d37", null ],
+    [ "set_LEAF_SIZE", "d1/d6c/classMATOPS_1_1BigMatrix_a654c6a62d3dec6a4728e56dd361adbf3.html#a654c6a62d3dec6a4728e56dd361adbf3", null ],
     [ "StrassenMultiply", "d1/d6c/classMATOPS_1_1BigMatrix_a71c665c80a1ca3731bd0d8ce37f0ace1.html#a71c665c80a1ca3731bd0d8ce37f0ace1", null ],
     [ "sub", "d1/d6c/classMATOPS_1_1BigMatrix_a5c89e7f360fb3cc32abbf6f1d430fb1f.html#a5c89e7f360fb3cc32abbf6f1d430fb1f", null ],
     [ "Transpose", "d1/d6c/classMATOPS_1_1BigMatrix_a3d3ca40bb701fbc884c6b603dd95e753.html#a3d3ca40bb701fbc884c6b603dd95e753", null ],
