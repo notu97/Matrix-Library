@@ -21,6 +21,12 @@
 #include<fstream>
 #include<string.h>
 
+int optimal_Leaf_size=1;
+
+// #ifdef SET_LEAF_SIZE
+// 	// cout<<"value is : "<<SET_LEAF_SIZE<<'\n';
+// 	optimal_Leaf_size=SET_LEAF_SIZE;
+// #endif 
 
 
 /**
@@ -282,8 +288,23 @@ namespace MATOPS
 		template<typename Data1>
 		class BigMatrix
 		{
-
+			// #ifdef SET_LEAF_SIZE
+			// int LEAF_SIZE; //= SET_LEAF_SIZE;
+			// #endif
 			int LEAF_SIZE;
+
+			// #ifndef SET_LEAF_SIZE
+			// int LEAF_SIZE; //=32;	
+			// #else
+			// int LEAF_SIZE;
+			// std::ifstream indata;
+			// indata.open("conf.txt");
+			// std::string str="";
+			// getline(indata,str);
+			// std::cout<<str<<'\n';
+			// indata.close("conf.txt");
+			// LEAF_SIZE=std::stoi(str);
+			// #endif
 
 			/**
 			 * \privatesection
@@ -351,7 +372,7 @@ namespace MATOPS
 			 * @return Returns a square matrix i.e. the Multiplication result of A and B.
 			 */
 			Data1** StrassenMultiply(Data1** A, Data1** B, int n)
-			{
+			{   //std::cout<<LEAF_SIZE<<"\n";
 				/* Naive Stressan's Algorithm
 				 * if(n==1)
 				{
@@ -612,6 +633,19 @@ namespace MATOPS
 			}
 		}
 
+		// void set_configerd_Leaf_size()
+		// {
+		// 	std::ifstream indata;
+		// 	indata.open("conf.txt");
+		// 	std::string str="";
+		// 	getline(indata,str);
+		// 	std::cout<<str<<'\n';
+		// 	indata.close("conf.txt");
+		// 	LEAF_SIZE=std::stoi(str);
+		// }
+
+		
+		#ifdef SET_LEAF_SIZE 
 		/**
 		 * @brief This Function sets the LEAF_SIZE i.e. the array size when we shift from Stressan's Algo to normal O(n^3) solution. The leaf size is used by
 		 * the StrassenMultiply recursive function to manipulate the recursion base condition. Once we reach a square matrix array  of size LEAF_SIZE x LEAF_SIZE
@@ -622,6 +656,25 @@ namespace MATOPS
 		{
 			LEAF_SIZE=leaf_size;
 		}
+		#else
+		/**
+		 * @brief Searches for the configure.txt file and sets the LEAF_SIZE value to the optimal value found out by configure_lib.cpp program.
+		 * 
+		 */
+		void set_configerd_Leaf_size()
+		{
+			std::ifstream indata;
+			indata.open("configure.txt");
+			std::string str="";
+			getline(indata,str);
+			indata.close();
+			LEAF_SIZE=std::stoi(str);
+		}
+		#endif
+
+		// #ifdef SET_LEAF_SIZE
+		// 	int LEAF_SIZE; //= SET_LEAF_SIZE;
+		// 	#endif
 
 		// Matrix Multiplication from CSV files
 		/**
@@ -637,7 +690,14 @@ namespace MATOPS
 		 */
 		void matmul(std::string file_1, std::string file_2, std::string path, bool print=false)
 
-				{   // Parse the CSV files and get the Matrices to be multiplied
+				{   
+					
+					#ifndef SET_LEAF_SIZE 
+						set_configerd_Leaf_size();
+					#endif
+					//std::cout<<"Current LEAF_SIZE value: "<<LEAF_SIZE<<'\n'; // Just a check to see what LEAF_SIZE value is being used
+					
+					// Parse the CSV files and get the Matrices to be multiplied
 
 					std::vector<std::vector<Data1>> MAT_1= load_CSV(file_1);
 					std::vector<std::vector<Data1>> MAT_2= load_CSV(file_2);

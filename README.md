@@ -15,7 +15,7 @@ Both the above scenarios adversely effects the execution time of Matrix Multipli
 
 ``` sh
 
-$ g++ configure_lib.cpp -o configure_lib
+$ g++ configure_lib.cpp -o configure_lib -DSET_LEAF_SIZE
 $ ./configure_lib <N_epoch> <SIZE_Lower> <SIZE_Upper>
 
 ```
