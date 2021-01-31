@@ -24,8 +24,6 @@
 #include<fstream>
 #include<string.h>
 
-int optimal_Leaf_size=1;
-
 /**
  * @brief The main matrix.h namespace.
  */
