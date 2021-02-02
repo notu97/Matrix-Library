@@ -13,9 +13,9 @@
  * \endcode
  * 
  * The program begins with LEAF_SIZE = 8, calls MATOPS::BigMatrix<Data1>::matmul() N_epoch times and calculates the average execution time of matmul 
- * over all the calls and stores it in a varaible min_time. Next it keeps on doing the same for LEAF_SIZE=16, 32,64 ..... as min_time keeps reducing.
+ * over all the calls and stores it in a varaible min_time. It continues doing the same for LEAF_SIZE=16, 32,64 ..... as min_time keeps reducing.
  * As soon as the value of min_time starts increasing we break out of the inifinite while loop and store the LEAF_SIZE value that gave the least min_time
- * in the configure.txt file. This file is later used by matmul to multiply big matrices.
+ * in a configure.txt file. This file is later used by matmul to multiply big matrices.
  *  
  * @author Shiladitya Biswas
  * @version 0.1
