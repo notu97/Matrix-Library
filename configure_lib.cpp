@@ -1,8 +1,23 @@
 /**
  * @file configure_lib.cpp
- * @author Shiladitya Biswas
+ * 
  * @brief A Cpp configuration file to find the best leaf size for Stressan's Algorithm and generate a "configure.txt" file. This file evaluates the 
- * execution time of the matmul function in class BigMatrix as function of different LEAF_SIZE.
+ * execution time of the MATOPS::BigMatrix<Data1>::matmul() function as function of different LEAF_SIZE values. This flag is always run with the 
+ * SET_LEAF_SIZE flag. This flag enables the matrix.h file to run in configuration mode. Thus enabling configure_lib.cpp to vary LEAF_SIZE variable 
+ * of matrx.h and find the most optimal LEAF_SIZE value. For a given LEAF_SIZE value this program calls MATOPS::BigMatrix<Data1>::matmul() N_epoch (>2)
+ * no. of times and finds out the average execution time of MATOPS::BigMatrix<Data1>::matmul() for that particular LEAF_SIZE. Use the following command 
+ * to run the configure_lib.cpp file
+ * 
+ * \code{.sh}
+ *  $ g++ configure_lib.cpp -o configure_lib -DSET_LEAF_SIZE && ./configure_lib <N_epoch>
+ * \endcode
+ * 
+ * The program begins with LEAF_SIZE = 8, calls MATOPS::BigMatrix<Data1>::matmul() N_epoch times and calculates the average execution time of matmul 
+ * over all the calls and stores it in a varaible min_time. Next it keeps on doing the same for LEAF_SIZE=16, 32,64 ..... as min_time keeps reducing.
+ * As soon as the value of min_time starts increasing we break out of the inifinite while loop and store the LEAF_SIZE value that gave the least min_time
+ * in the configure.txt file. This file is later used by matmul to multiply big matrices.
+ *  
+ * @author Shiladitya Biswas
  * @version 0.1
  * @date 2021-01-29
  * 

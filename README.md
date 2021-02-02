@@ -11,7 +11,7 @@ Inorder to get the best performance from this library for large Matrix Multiplic
 * A very high value of ```LEAF_SIZE``` leads to lesser resursion calls but ends up giving more weightage to the ```O(n^3)``` solution, thus suffer high execution time. 
 * On the other hand a very low ```LEAF_SIZE``` value leads to higher number of resursion calls and gives lesser weightage to the ```O(n^3)``` solution, which again leads to high execution time. 
 
-Both the above scenarios adversely effects the execution time of Matrix Multiplication and added to that the value of optimal ```LEAF_SIZE``` will vary from machine to machine. Thus we have to experimentally determine the ```LEAF_SIZE``` value from the computer on which this library will be used. In order to do this a ```configure_lib.cpp``` file and is provided with this library. This file performs Matrix Multiplication between 2 large matrices A & B (stored as A.csv and B.csv in Configure_Data folder) using the ```matmul``` function (defined in class ```BigMatrix```). ```Configure_lib.cpp``` performs the multiplication for ```N_epoch``` no. of times for a given ```leaf_size``` and finds the average execution times for this particular ```leaf_size```. Finally, ```configure_lib.cpp``` contains an infinite while loop that keeps track of the ```leaf_size``` value and finds out the best/lowest execution time. The ```leaf_size``` value is doubled at every iteration, the while loop breaks out when once the optimal value of ```leaf_size``` is achived and this value is stored in a ```configure.txt``` file. The command to find the optimal ```LEAF_SIZE``` and generate the ```configure.txt``` is as follows :
+Both the above scenarios adversely effects the execution time of Matrix Multiplication and added to that the value of optimal ```LEAF_SIZE``` will vary from machine to machine. Thus we have to experimentally determine the ```LEAF_SIZE``` value from the computer on which this library will be used. In order to do this a ```configure_lib.cpp``` file and is provided with this library. This file performs Matrix Multiplication between 2 large matrices A & B (stored as A.csv and B.csv in Configure_Data folder) using the ```matmul``` function (defined in class ```BigMatrix```). ```Configure_lib.cpp``` performs the multiplication for ```N_epoch``` no. of times (N_epoch >2) for a given ```leaf_size``` and finds the average execution times for this particular ```leaf_size```. Finally, ```configure_lib.cpp``` contains an infinite while loop that keeps track of the ```leaf_size``` value and finds out the best/lowest execution time. The ```leaf_size``` value is doubled at every iteration, the while loop breaks out once the optimal value of ```leaf_size``` is achived and this value is stored in a ```configure.txt``` file. The command to find the optimal ```LEAF_SIZE``` and generate the ```configure.txt``` is as follows :
 
 ``` sh
 
@@ -86,7 +86,7 @@ Given a matrix A in A.csv file, we wish to find out its transpose and store it i
 MATOPS::BigMatrix<float> MatObj; // Defining a Matrix object
 MatObj.Transpose("/path/to/A.csv", "/path/to/A_trans.csv"); // Transposing the matrix and store in a A_trans.csv
 
-MatOnj.Transpose("/path/to/A.csv"); // In-place Matrix transpose.
+MatObj.Transpose("/path/to/A.csv"); // In-place Matrix transpose.
 
 MatObj.Mat_print("/path/to/A_trans.csv"); // Printing the result
 ```
@@ -105,7 +105,7 @@ using namespace MATOPS; //namespace for matrix.h
 
 int main() {
 	
-	// Define matrices of size 2x4 and 2x2 of type double
+	// Define matrices of size 2x4 and 2x2 of type double using Initializer List
 	Matrix<double,2,4> B{{1,2,4,5},{4,6,7,8}}; 
 	Matrix<double,2,2> A{{1,2},{2,2}};
 	
@@ -129,9 +129,16 @@ int main() {
 	return 0;
 }
 
+```
+
+Terminal command to run example.cpp file is as follows: 
+``` sh
+
+$ g++ example.cpp -o example && ./example
 
 ```
 
+## Future Extension
 
-
+I have kept the matrix.cpp file empty for adding future functionalities/extensions to the existing library. 
 

@@ -1,10 +1,7 @@
 /**
  * @file matrix.h
  * @author Shiladitya Biswas (https://github.com/notu97)
- * @brief The main Matrix library header file. A simple Matrix operation library, to Multiply 2 Matrices and find the transpose of a Matrix. 
- * The library is divided into two parts, one for small Matrices (i.e. Matrix multiplication is performed with O(^3) time complexity) and 
- * another for large Matrices where a mixture of Stressan's Algorithm (Time Complexity: O(n^2.8)) and the naive algorithm (Time Complexity: O(n^3))
- * is used to Multiply two Matrices.
+ * @brief The main Matrix library header file. 
  * @version 0.1
  * @date 2021-01-30
  * 
@@ -25,7 +22,9 @@
 #include<string.h>
 
 /**
- * @brief The main matrix.h namespace.
+ * @brief The main matrix.h namespace named MATOPS- MATrix OPerations. It contains 2 Matrix classes, namely class Matrix and class BigMatrix to perform matrix operations.
+ * The class Matrix uses the naive O(n^3) solution to perform matrix multiplication and the class BigMatrix uses a mixture of Strassesn's algorithm and Naive O(n^3) 
+ * solution to perform Matrix multiplication. Both the classes perform matrix transpose in similar fashion, i.e. by swapping the off diagonal elements.
  */
 namespace MATOPS
 {
@@ -35,6 +34,9 @@ namespace MATOPS
 		 * @tparam T = DataType of the Matrix. Eg. int, float, double etc.
 		 * @tparam m = No. of Rows of the Matrix
 		 * @tparam n = No. of Cols of the Matrix
+		 * 
+		 * Warning: This class can't handle really large matrices. On initilizing large Matrices the program stack gets filled with data and there is no space left
+		 * to do other operations. Care should be taken that the matrix sizes are less than 200.
 		 */
 		template<typename T, size_t m, size_t n>
 		class Matrix{
@@ -48,7 +50,6 @@ namespace MATOPS
 			virtual ~Matrix() {}
 
 			/**
-			 *
 			 * @return Returns the number of columns in the Matrix
 			 */
 			size_t cols()
@@ -105,7 +106,7 @@ namespace MATOPS
 
 			// Initialize the Matrix from 2D Vectors
 			/**
-			 * @brief Overloaded constructor the initialize the Matrix from a 2D Vector.
+			 * @brief Overloaded constructor to initialize the Matrix from a 2D Vector.
 			 * @param my_vec = A 2D initializer_list of the the m x n Matrix. Eg: {{1,2},{3,4}}
 			 */
 			Matrix( std::vector<std::vector<T>>& my_vec):Matrix()
@@ -261,14 +262,14 @@ namespace MATOPS
 
 		// Template to convert variable type from string to int,float, double or any other Datatype
 		/**
-		 * @brief Function template to convert variable type from string to int,float, double or any other Datatype
-		 * @tparam My_data = Datatype into which we want to convert the string input from CSV files.
+		 * @brief Function template to convert variable type from string to int,float, double or any other Datatype spcified by My_data.
+		 * @tparam My_data = Datatype into which we want to convert the string inputs parsed from CSV files.
 		 * @param str = String input from the Csv file.
 		 * @return Returns Converted number from string to My_data.
 		 */
 		template<typename My_data> My_data convert_to(const std::string &str)
 			{
-				std::istringstream ss(str);
+				std::istringstream ss(str); 
 
 				My_data num;
 
@@ -278,8 +279,12 @@ namespace MATOPS
 
 
 		/**
-		 * @brief This is the Class for handling Large Matrices. It takes in large Matrices stored as comma-separated values (CSV) files 
-		 * and perform both Multiplication (Stressan's Algorithm) and transpose.
+		 * @brief This is the Class for handling Large Matrices. It takes in large Matrices stored as comma-separated values (CSV) files and perform both Multiplication 
+		 * (Stressan's Algorithm) and transpose. It contains all the important functions namely ,matmul function, StressanMultiply function and many other helper functions 
+		 * that are needed by these functions for smooth functioning. This class also contains blocks of code that are gated by the SET_LEAF_SIZE flag, for example the 
+		 * set_LEAF_SIZE() function and the set_configerd_Leaf_size() function. When matrix.h is compiled with the SET_LEAF_SIZE flag raised the set_LEAF_SIZE() function is active
+		 * and set_configerd_Leaf_size() function is inactive. And the vice-versa happens when matrix.h is compiled without the SET_LEAF_SIZE flag.
+		 * 
 		 * @tparam Data1 = Datatype of the BigMatrix. Eg. int, float, double etc.
 		 */
 		// BIG MATRIX Multiplication and Transpose
@@ -295,7 +300,7 @@ namespace MATOPS
 			/**
 			 * @brief Function to dynamically allocate/initialize an n x n matrix in the memory.
 			 * @param n = No. of rows and cols of the BigMatrix.
-			 * @return Returns a pointer pointing to the initialized BigMatrix.
+			 * @return Returns a pointer pointing to a memory location containing 0 matrix of size n x n.
 			 *
 			 */
 
@@ -313,10 +318,10 @@ namespace MATOPS
 
 			/**
 			 * @brief Function to Add 2 square Matrices of size n.
-			 * @param M1 = BigMatrix 1
-			 * @param M2 = BigMatrix 2
+			 * @param M1 = Pointer pointing to BigMatrix M1 loaded into memory  
+			 * @param M2 = Pointer pointing to BigMatrix M2 loaded into memory 
 			 * @param n  = Size of the Matrices
-			 * @return Returns a pointer pointing to the sum of M1 and M2
+			 * @return Returns a pointer pointing to a memory location containing the sum of M1 and M2
 			 */
 			// Matrix ADD ===================
 			Data1** add(Data1** M1, Data1** M2, int n)
@@ -330,10 +335,10 @@ namespace MATOPS
 
 			/**
 			 * @brief Function to Subtract 2 square Matrices of size n.
-			 * @param M1 = BigMatrix 1
-			 * @param M2 = BigMatrix 2
+			 * @param M1 = Pointer pointing to BigMatrix M1 loaded into memory 
+			 * @param M2 = Pointer pointing to BigMatrix M2 loaded into memory 
 			 * @param n  = Size of the Matrices
-			 * @return Returns a pointer pointing to the difference of M1 and M2
+			 * @return Returns a pointer pointing to a memory location containing the difference of M1 and M2
 			 */
 			// Matrix SUBTRACT ===============
 			Data1** sub(Data1** M1, Data1** M2, int n)
@@ -351,6 +356,13 @@ namespace MATOPS
 			 * @param B = BigMatrix B
 			 * @param n = Size of both A and B
 			 * @return Returns a square matrix i.e. the Multiplication result of A and B.
+			 * 
+			 * The LEAF_SIZE is set by the MATOPS::BigMatrix<Data1>::set_configerd_Leaf_size() function from witin the MATOPS::BigMatrix<Data1>::matmul() function. The input Matrices 
+			 * A and B are both broken down into 4 blocks, these matrices are used to calculate the 7 Strassen's coeffcient matrices. In order to calculate the Strassen's Coefficent
+			 * the StrassenMultiply function is recurssively called. Once the matrix sizes becomes equal to or less than LEAF_SIZE, we hit the base condition and perform the Matrix 
+			 * multiplication using the O(n^3) solution. Finally all the callocated memory (allocated by Init_matrix()) is freed up.
+			 * 
+			 * 
 			 */
 			Data1** StrassenMultiply(Data1** A, Data1** B, int n)
 			{   
@@ -363,8 +375,8 @@ namespace MATOPS
 				}*/
 
 				// Once array size of LEAF_SIZE x LEAF_SIZE or lesser is reached we switch to the O(n^3) Matrix Multiplication solution, since after this 
-				// stage the recursion calls become a burden to the whole algorithm and we end up getting high execution time. This value of "64" is 
-				// architecture dependent and will vary from machine to machine.
+				// stage the recursion calls become a burden to the whole algorithm and we end up getting high execution time. The LEAF_SIZE is set by the
+				// MATOPS::BigMatrix<Data1>::set_configerd_Leaf_size() function from witin the MATOPS::BigMatrix<Data1>::matmul() function.
 				if(n<=LEAF_SIZE)
 				{
 					Data1** C=Init_matrix(n);
@@ -539,9 +551,9 @@ namespace MATOPS
 			// Print Matrix (internal printing)
 			/**
 			 * @brief This function is called from within the MATOPS::BigMatrix<Data1>::matmul function when print == True
-			 * @param C
-			 * @param m
-			 * @param n
+			 * @param C Pointer to the memory where the array is stored.
+			 * @param m No of rows of the Matrix
+			 * @param n No of Columns of the Matrix
 			 */
 			void print_Mat(Data1** C, int m, int n)
 			{
@@ -558,7 +570,7 @@ namespace MATOPS
 		// LOAD from CSV file Template
 			/**
 			 * @brief Function to load CSV file. This function is internally called by  MATOPS::BigMatrix<Data1>::matmul  and  MATOPS::BigMatrix< Data1 >::Transpose 
-			 * to load the BigMatrix 's to be multiplied or Transposed. It throws an error if path is invalid or CSV doesn't exist.
+			 * to load the BigMatrix's to be multiplied or Transposed. It throws an error if path is invalid or CSV doesn't exist.
 			 * @param path= "path to CSV file i.e. to be loaded"
 			 * @return A pointer to the Matrix loaded in memory.
 			 */
@@ -612,25 +624,35 @@ namespace MATOPS
 		}
 		
 		/** 
-		 * @brief This Function sets the LEAF_SIZE i.e. the array size when we shift from Stressan's Algo to normal O(n^3) solution. The leaf size is used by
-		 * the StrassenMultiply recursive function to manipulate the recursion base condition. Once we reach a square matrix array  of size LEAF_SIZE x LEAF_SIZE
-		 * or lesser, we perform the multiplication using the naive O(n^3) time complexity solution. The value of LEAF_SIZE varies from machine to machine, hence
-		 * we need to experimentally find out this value for each machine and configure the matrix.h library accordingly. 
+		 * @brief This Function sets the LEAF_SIZE i.e. the array size at which we shift from Stressan's Algo to normal O(n^3) solution, this prevents the 
+		 * StrassenMultiply recursion function from down to a leaf size/Matrix size of 1. Once we reach a square matrix array of size LEAF_SIZE x LEAF_SIZE 
+		 * or lesser, we perform the multiplication using the naive O(n^3) time complexity solution. 
 		 * 
-		 * The SET_LEAF_SIZE flag is raised by configure_lib.cpp file during execution, thus allowing it to manipulate the LEAF_SIZE (private variable) of the 
-		 * matrix.h file . Hence configure.cpp can test the hardware for different values of LEAF_SIZE and pick the optimal LEAF_SIZE value (i.e. the one with 
-		 * the lowest execution time) and generate the configure.txt file. 
+		 * 		A very high value of LEAF_SIZE leads to lesser recursion calls but ends up giving more weightage to the O(n^3) solution, thus suffer high 
+		 * 		execution time. 
+		 * 
+		 * 		On the other hand a very low LEAF_SIZE value leads to higher number of resursion calls and gives lesser weightage to the O(n^3) solution, 
+		 * 		which again leads to high execution time. 
+		 * 
+		 * Hence an optimal LEAF_SIZE value has to be found that gives the minimum execution time by finding a trade off between the O(n^3) solution and recurssion 
+		 * calls. This indirectly implies that the value of LEAF_SIZE vary from one machine to another, thus we need to experimentally find out this value for each 
+		 * machine and configure the matrix.h library accordingly. This experimentation is done by the configure_lib.cpp, which raises the SET_LEAF_SIZE flag 
+		 * (thus activating the set_LEAF_SIZE() function) during execution, as a result of which the "matrix.h" library is called (in its configuration mode) by 
+		 * configure_lib.cpp. This allows configure_lib.cpp to manipulate the LEAF_SIZE (private variable) of the matrix.h file. Hence configure.cpp can test the 
+		 * hardware for different values of LEAF_SIZE and pick its optimal (i.e. the value that gives the lowest execution time) value and finally store the optimal 
+		 * value in the configure.txt file. 
 		 * 
 		 */
-		#ifdef SET_LEAF_SIZE 		
+		#ifdef SET_LEAF_SIZE 
 		void set_LEAF_SIZE(int leaf_size)
 		{
 			LEAF_SIZE=leaf_size;
 		}
 		#else
 		/**
-		 * @brief Searches for the configure.txt file (generated earlier) and sets the LEAF_SIZE value to the optimal value found out by configure_lib.cpp program 
-		 * during configuration process. This function is called by the  MATOPS::BigMatrix<Data1>::matmul before starting the multiplication process.
+		 * @brief When matrix.h is normally called i.e. without any SET_LEAF_SIZE flag, set_configerd_Leaf_size() function gets activated (set_LEAFT_SIZE() function
+		 * gets deactivated). The set_configerd_Leaf_size() function searches for the configure.txt file (generated earlier by configure_lib.cpp during the configuration
+		 * process) and sets the optimal value of LEAF_SIZE. This function is called by the  MATOPS::BigMatrix<Data1>::matmul before starting the multiplication process.
 		 * 
 		 */
 		void set_configerd_Leaf_size()
@@ -646,16 +668,26 @@ namespace MATOPS
 
 		// Matrix Multiplication from CSV files
 		/**
-		 * @brief This is the BigMatrix multiplication Function. To multiply two matrices A and B stored in A.csv and B.csv respectively and store the result in C.csv file.
-		 * Before brginning the multiplication process it parses the configure.txt (generated by configure_lib.cpp during the configuration process) and sets the 
-		 * optimal LEAF_SIZE value.
+		 * @brief This is the BigMatrix multiplication Function that multiplies two matrices A and B stored in A.csv and B.csv respectively and store the result in C.csv file.
+		 * Before beginning the multiplication process it calls the MATOPS::BigMatrix<Data1>::set_configerd_Leaf_size() function to parses the configure.txt (generated by 
+		 * configure_lib.cpp during the configuration process) and sets the optimal LEAF_SIZE value.
 		 * @param file_1 = "path to A.csv"
 		 * @param file_2 = "path to B.csv"
 		 * @param path = path to a store file (no need to predefine C.csv file in the directory, it gets generated automatically.)
-		 * @param print = True, To see all the Matrices i.e. A,B and C in the output terminal/stdio. \n
-		 *
-		 *	Define a BigMatrix object BigMatrix<DataType> MatObj, where DataType can be int, float, double, long etc.\n
-		 *	Then call MatObj.matmul("path/to/A.csv","path/to/B.csv","path/to/C.csv") from your program. The C.csv file generated file contains C=A*B.
+		 * @param print = True, To see all the Matrices i.e. A,B and C in the output terminal/stdio.
+		 * 
+		 * Overall Working: When matmul is called, it first sets the the optimal LEAF_SIZE value. It then loads the two csv files from "path to A.csv" and "path to B.csv"
+		 * directories into two 2D vectors namely MAT_1 and MAT_2 of type Data1 using MATOPS::BigMatrix<Data1>::load_CSV function. The dimensions of both the matrices are determined from MAT_1 and MAT_2 say m_1,n_1 ad m_2,n_2 
+		 * respectively. If the inner dimensions of both MAT_1 and MAT_2 don't match an error is thrown and the program is exited. If the inner dimensions match then we proceed 
+		 * for Multiplication. Before calling the MATOPS::BigMatrix<Data1>::StrassenMultiply fuction, we pad the matrices with zeros to make both MAT_1 and MAT_2 square matrices 
+		 * of equal dimension, dim_n. Where dim_n is a power of 2 i.e. greater than or equal to max(m_1,n_1,n_2) or max(m_1,m_2,n_2) (since n_1=m_2). We callocate 
+		 * (by calling MATOPS::BigMatrix<Data1>::Init_matrix(dim_n) two chunk of memory of size dim_n x dim_n pointed by pointers A and B. Finally  we build the Zero padded square
+		 * Matrices by copying the contents from from MAT_1 and MAT_2 into the memory (pointed by A and B) respectively. These Memory addresses and dim_n are then passed on to the MATOPS::BigMatrix<Data1>::StrassenMultiply function to evaluate the product of A and B. The MATOPS::BigMatrix<Data1>::StrassenMultiply() func returns a pointer pointing 
+		 * to a location in the memory where the answer is stored. This memory address is then passed to the MATOPS::BigMatrix<Data1>::store_csv() along with the resultant matrix 
+		 * dimension (i.e. m_1 x n_2) and the storage destination path to store the final result in a csv file.
+		 * 
+		 * Finally all the callocated memories are freed up.
+		 * 	
 		 */
 		void matmul(std::string file_1, std::string file_2, std::string path, bool print=false)
 
@@ -700,7 +732,7 @@ namespace MATOPS
 						A=Init_matrix(dim_n); // Allocate the memory for Matrix A of size dim_n
 						B=Init_matrix(dim_n); // Allocate the memory for Matrix B of size dim_n
 
-						// Build the Zero padded square Matrices A and B
+						// Build the Zero padded square Matrices A and B by copying contents from from MAT_1 and MAT_2 into A and B respectively.
 							for(int k=0;k<m_1;k++)
 							{
 								for(int l=0;l<n_1;l++)
