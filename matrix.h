@@ -280,8 +280,8 @@ namespace MATOPS
 
 		/**
 		 * @brief This is the Class for handling Large Matrices. It takes in large Matrices stored as comma-separated values (CSV) files and perform both Multiplication 
-		 * (Stressan's Algorithm) and transpose. It contains all the important functions namely ,matmul function, StressanMultiply function and many other helper functions 
-		 * that are needed by these functions for smooth functioning. This class also contains blocks of code that are gated by the SET_LEAF_SIZE flag, for example the 
+		 * (Stressan's Algorithm) and transpose. It contains all the important functions namely ,matmul function, StressanMultiply function and other helper functions 
+		 * that are needed for smooth functioning of the library. This class also contains blocks of code that are gated by the SET_LEAF_SIZE flag, for example the 
 		 * set_LEAF_SIZE() function and the set_configerd_Leaf_size() function. When matrix.h is compiled with the SET_LEAF_SIZE flag raised the set_LEAF_SIZE() function is active
 		 * and set_configerd_Leaf_size() function is inactive. And the vice-versa happens when matrix.h is compiled without the SET_LEAF_SIZE flag.
 		 * 
