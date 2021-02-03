@@ -51,7 +51,7 @@ int main() {
 	MatObj.Transpose("/path/to/A.csv");
 
 	// print Matrix in file A.csv
-	MatObj.Mat_print("/home/shiladitya/eclipse-workspace/new.csv");
+	MatObj.Mat_print("/path/to/matrix/to/print");
 
 	return 0;
 }

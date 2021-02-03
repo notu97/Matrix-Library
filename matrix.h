@@ -88,10 +88,35 @@ namespace MATOPS
 			 * @param my_list = A 2D initializer_list of the the m x n Matrix. Eg: {{1,2},{3,4}}
 			 */
 			Matrix(std::initializer_list<std::initializer_list<T>> my_list):Matrix()
-				{
+				{	
+					//std::cout<<my_list(0).<<'\n';
+					try{
+						if((m!=my_list.size()))
+						{
+							throw "Wrong Matrix dimension initialized\n";
+						}
+					}catch (const char* msg)
+					{
+						std::cerr<< msg<<'\n';
+						exit(0);
+					}
+
+
 					int row_n=0;
 					for(std::initializer_list<T> i:my_list)
 					{   int col_n=0;
+
+						try{
+						if((n!=i.size()))
+						{
+							throw "Wrong Matrix dimension initialized\n";
+						}
+						}catch (const char* msg)
+						{
+							std::cerr<< msg<<'\n';
+							exit(0);
+						}
+
 						for(T j : i)
 						{
 							ElementAt(row_n,col_n)=j;
@@ -110,7 +135,17 @@ namespace MATOPS
 			 * @param my_vec = A 2D initializer_list of the the m x n Matrix. Eg: {{1,2},{3,4}}
 			 */
 			Matrix( std::vector<std::vector<T>>& my_vec):Matrix()
-			{
+			{	
+				try{
+						if((m!=my_vec.size())||(n!=my_vec[0].size()))
+						{
+							throw "Wrong Matrix dimension initialized \n";
+						}
+					}catch (const char* msg)
+					{
+						std::cerr<< msg<<'\n';
+						exit(0);
+					}
 
 				for(size_t i=0; i<my_vec.size(); ++i)
 					for(size_t j=0; j<my_vec[0].size(); ++j)
