@@ -21,7 +21,7 @@ $ g++ configure_lib.cpp -o configure_lib -DSET_LEAF_SIZE
 $ ./configure_lib <N_epoch>
 
 ```
-<!-- Note: Since I have used the most simplest Stressan's Algorithm implmentation, where by both the input matrices are padded with zeros to make there size equal to the next largest power of 2, the matrix size is always a power of 2. Hence the ```SIZE_Lower``` and ```SIZE_Upper``` values should always be a power of 2. -->
+
 
 Once configuration is complete, just put the ```matrix.h``` header file in the C++ working directory and include it in the main cpp code using ```#include"matirx.h"```. Also please make sure to keep the ```configure.txt``` generated during the configuration step, in the same directory as "matrix.h" i.e. the C++ working directory. An ```example.cpp``` template file is provided to get started.
 
